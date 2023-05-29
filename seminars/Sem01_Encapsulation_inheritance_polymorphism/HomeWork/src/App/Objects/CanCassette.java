@@ -12,6 +12,10 @@ public class CanCassette extends Cassette {
         super(capacity);
     }
 
+    public CanCassette() {
+        this(10);
+    }
+
 
     private void placeProduct(Product product) {
         super.cassette.addLast(product);

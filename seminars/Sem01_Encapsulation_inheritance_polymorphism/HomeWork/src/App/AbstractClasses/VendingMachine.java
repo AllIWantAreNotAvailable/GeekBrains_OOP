@@ -25,7 +25,11 @@ public abstract class VendingMachine {
 
     public abstract boolean initProducts(List<Product> products);
 
+    protected abstract boolean putProduct(Product product);
+
     public abstract boolean isEmpty();
+
+    public abstract boolean isFull();
 
     protected abstract void calculateProfit(Product product);
 

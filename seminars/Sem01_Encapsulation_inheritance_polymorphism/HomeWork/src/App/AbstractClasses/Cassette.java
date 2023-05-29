@@ -22,6 +22,10 @@ public abstract class Cassette {
         return cassette.isEmpty();
     }
 
+    public boolean isFull(){
+        return cassette.size() == capacity;
+    }
+
     public abstract boolean putProduct(Product product);
     public abstract boolean putProducts(List<Product> products);
     public abstract Product peekProduct();

@@ -6,6 +6,7 @@ import App.AbstractClasses.VendingMachine;
 import App.Interfaces.Vending;
 
 import java.util.List;
+import java.util.Map;
 
 public class CansVendingMachine extends VendingMachine implements Vending {
 
@@ -15,23 +16,49 @@ public class CansVendingMachine extends VendingMachine implements Vending {
 
     @Override
     public boolean isEmpty() {
-        boolean flag = true;
-        if (super.assortment.size() == 0) return flag;
-        for (Cassette cassette :
-                super.assortment.values()) {
-            if (!cassette.isEmpty()) {
-                flag = false;
-                break;
-            }
-        }
-        return flag;
+        return super.assortment.size() == 0;
+    }
+
+    @Override
+    public boolean isFull() {
+        return super.assortment.size() == super.capacity;
     }
 
     @Override
     public boolean initProducts(List<Product> products) {
-        if (!isEmpty()) return false;
-        // TODO: 29.05.2023 Закончить метод
-        return true;
+        boolean allPlaced = false;
+        if (isEmpty()) {
+            allPlaced = putProducts(products);
+        }
+        super.priceList.update(this.assortment.values());
+        return allPlaced;
+    }
+
+    @Override
+    protected boolean putProduct(Product product) {
+        boolean success = false;
+        String item = product.getProductName();
+        if (!assortment.containsKey(item)) {
+            if (!isFull()) {
+                Cassette cassette = new CanCassette();
+                success = cassette.putProduct(product);
+                assortment.put(item, cassette);
+            }
+            return success;
+        }
+        Cassette cassette = assortment.get(item);
+        if (cassette.isFull()) return success;
+        success = cassette.putProduct(product);
+        return success;
+    }
+
+    @Override
+    public boolean putProducts(List<Product> products) {
+        for (int i = products.size() - 1; i >= 0; i--) {
+            if (putProduct(products.get(i))) products.remove(i);
+        }
+        super.priceList.update(this.assortment.values());
+        return products.size() == 0;
     }
 
     @Override
@@ -40,22 +67,12 @@ public class CansVendingMachine extends VendingMachine implements Vending {
     }
 
     @Override
-    public boolean putProduct(Product product) {
-        return false;
-    }
-
-    @Override
-    public boolean putProducts(List<Product> products) {
-        return false;
-    }
-
-    @Override
     public Product getProduct(String name, float cash) {
         return null;
     }
 
     @Override
-    public List<Product> getProducts(List<String> names, float cash) {
+    public List<Product> getProducts(Map<String, Integer> specification, float cash) {
         return null;
     }
 }
