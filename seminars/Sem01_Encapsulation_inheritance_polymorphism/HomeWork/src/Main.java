@@ -1,14 +1,20 @@
+import Application.Product;
+import Application.VendingMachine;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     /*
     ### OnlineTasks ###
-    TODO Задача 1 - Абстракция:
+    Задача 1 - Абстракция:
      Реализуйте:
       - класс Товар, содержащий данные о товаре;
       - ТорговыйАвтомат, содержащий в себе методы:
         * initProducts (List <Product>) сохраняющий в себе список исходных продуктов;
         * getProduct(String name).
 
-    TODO Задача 2 - Инкапсуляция:
+    Задача 2 - Инкапсуляция:
      Реализуйте:
       - конструкторы;
       - get/set методы;
@@ -50,6 +56,42 @@ public class Main {
     TODO Заменить возврат пустых списков(объектов) на null.
      */
     public static void main(String[] args) {
+        part1_Task1and2();
+    }
 
+    public static void part1_Task1and2() {
+        List<Product> products = getProductsList();
+        for (Product product:
+             products) {
+            System.out.println(product);
+        }
+        System.out.println();
+
+        products.addAll(getProductsList());
+        products.addAll(getProductsList());
+        products.addAll(getProductsList());
+
+        VendingMachine vendingMachine = new VendingMachine(products);
+        for (Product product :
+                products) {
+            System.out.println(vendingMachine.getProduct(product.getProductName()));
+        }
+    }
+
+    private static List<Product> getProductsList() {
+        return new ArrayList<>() {
+            {
+                add(new Product("SNICKERS"));
+                add(new Product("MARS"));
+                add(new Product("BOUNTI"));
+                add(new Product("TWIX"));
+                add(new Product("БАБАЕВСКИЙ"));
+                add(new Product("PICNIC"));
+                add(new Product("NUTS"));
+                add(new Product("KITKAT"));
+                add(new Product("MILKY WAY"));
+                add(new Product("MILKA"));
+            }
+        };
     }
 }
