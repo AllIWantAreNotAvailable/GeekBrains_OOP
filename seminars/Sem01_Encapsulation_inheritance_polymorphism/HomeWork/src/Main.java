@@ -1,8 +1,11 @@
-import Application.Product;
-import Application.VendingMachine;
+import Application.Abstracts.Product;
+import Application.Interfaces.Products;
+import Application.Objects.ChocolateBars;
+import Application.Objects.VendingMachine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Main {
     /*
@@ -20,22 +23,22 @@ public class Main {
       - get/set методы;
       - постройте логику ТорговогоАвтомата на основе кода сделанного в предыдущем задании.
 
-    TODO Задача 3 - Наследование:
+    Задача 3 - Наследование:
      - Сделайте класс Товар абстрактным:
         * создайте нескольких наследников (к примеру: БутылкаВоды);
      - сделайте интерфейсом ТорговыйАвтомат:
         * реализуйте класс какого-то одного типа ТорговогоАвтомата (пример: ПродающийБутылкиВодыАвтомат).
 
-    TODO Задача 4 - Полиморфизм:
+    Задача 4 - Полиморфизм:
      1) Товар:
-        - переопределите метод toString для Товара;
-        - запустите программу;
-        - после этого переопределите для наследника этот метод;
-        - после запуска обратите внимание на изменение поведения;
+        + переопределите метод toString для Товара;
+        + запустите программу;
+        + после этого переопределите для наследника этот метод;
+        + после запуска обратите внимание на изменение поведения;
      2) ТорговыйАвтомат:
-        - создайте перегруженный метод выдачи товара ТорговымАвтоматом дополнив дополнительным входным
+        + создайте перегруженный метод выдачи товара ТорговымАвтоматом дополнив дополнительным входным
      параметром (пример: getProduct(String name) выдающий товар по имени;
-        - создайте метод возвращающий товар по имени и какому-либо параметру товара getProduct(String name, int volume).
+        + создайте метод возвращающий товар по имени и какому-либо параметру товара getProduct(String name, int volume).
 
     ### HomeWork ###
     TODO 1. Задачи:
@@ -56,41 +59,47 @@ public class Main {
     TODO Заменить возврат пустых списков(объектов) на null.
      */
     public static void main(String[] args) {
-        part1_Task1and2();
+//        onlineTasks();
     }
 
-    public static void part1_Task1and2() {
-        List<Product> products = getProductsList();
-        for (Product product:
-             products) {
-            System.out.println(product);
-        }
-        System.out.println();
+    private static void onlineTasks() {
+        List<Products> productsList = getProductsList();
 
-        products.addAll(getProductsList());
-        products.addAll(getProductsList());
-        products.addAll(getProductsList());
+        productsList.addAll(getProductsList());
+        productsList.addAll(getProductsList());
+        productsList.addAll(getProductsList());
 
-        VendingMachine vendingMachine = new VendingMachine(products);
-        for (Product product :
-                products) {
-            System.out.println(vendingMachine.getProduct(product.getProductName()));
+        VendingMachine vendingMachine = new VendingMachine(productsList);
+        productsList = getProductsList();
+        System.out.printf("vendingMachine.isEmpty() == %b\n", vendingMachine.isEmpty());
+        Random random = new Random();
+        while (!vendingMachine.isEmpty()) {
+            if (!productsList.isEmpty()) {
+                System.out.println(vendingMachine.getProduct(
+                                productsList.get(
+                                        random.nextInt(0, productsList.size())
+                                ).getName(),
+                                random.nextFloat(99.99f, 100.1f)
+                        )
+                );
+            }
         }
+        System.out.printf("vendingMachine.isEmpty() == %b\n", vendingMachine.isEmpty());
     }
 
-    private static List<Product> getProductsList() {
+    private static List<Products> getProductsList() {
         return new ArrayList<>() {
             {
-                add(new Product("SNICKERS"));
-                add(new Product("MARS"));
-                add(new Product("BOUNTI"));
-                add(new Product("TWIX"));
-                add(new Product("БАБАЕВСКИЙ"));
-                add(new Product("PICNIC"));
-                add(new Product("NUTS"));
-                add(new Product("KITKAT"));
-                add(new Product("MILKY WAY"));
-                add(new Product("MILKA"));
+                add(new ChocolateBars("SNICKERS", 100.0f));
+                add(new ChocolateBars("MARS", 100.0f));
+                add(new ChocolateBars("BOUNTI", 100.0f));
+                add(new ChocolateBars("TWIX", 100.0f));
+                add(new ChocolateBars("БАБАЕВСКИЙ", 100.0f));
+                add(new ChocolateBars("PICNIC", 100.0f));
+                add(new ChocolateBars("NUTS", 100.0f));
+                add(new ChocolateBars("KITKAT", 100.0f));
+                add(new ChocolateBars("MILKY WAY", 100.0f));
+                add(new ChocolateBars("MILKA", 100.0f));
             }
         };
     }
