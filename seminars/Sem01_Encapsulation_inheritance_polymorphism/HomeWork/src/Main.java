@@ -59,48 +59,6 @@ public class Main {
     TODO Заменить возврат пустых списков(объектов) на null.
      */
     public static void main(String[] args) {
-//        onlineTasks();
-    }
 
-    private static void onlineTasks() {
-        List<Products> productsList = getProductsList();
-
-        productsList.addAll(getProductsList());
-        productsList.addAll(getProductsList());
-        productsList.addAll(getProductsList());
-
-        VendingMachine vendingMachine = new VendingMachine(productsList);
-        productsList = getProductsList();
-        System.out.printf("vendingMachine.isEmpty() == %b\n", vendingMachine.isEmpty());
-        Random random = new Random();
-        while (!vendingMachine.isEmpty()) {
-            if (!productsList.isEmpty()) {
-                System.out.println(vendingMachine.getProduct(
-                                productsList.get(
-                                        random.nextInt(0, productsList.size())
-                                ).getName(),
-                                random.nextFloat(99.99f, 100.1f)
-                        )
-                );
-            }
-        }
-        System.out.printf("vendingMachine.isEmpty() == %b\n", vendingMachine.isEmpty());
-    }
-
-    private static List<Products> getProductsList() {
-        return new ArrayList<>() {
-            {
-                add(new ChocolateBars("SNICKERS", 100.0f));
-                add(new ChocolateBars("MARS", 100.0f));
-                add(new ChocolateBars("BOUNTI", 100.0f));
-                add(new ChocolateBars("TWIX", 100.0f));
-                add(new ChocolateBars("БАБАЕВСКИЙ", 100.0f));
-                add(new ChocolateBars("PICNIC", 100.0f));
-                add(new ChocolateBars("NUTS", 100.0f));
-                add(new ChocolateBars("KITKAT", 100.0f));
-                add(new ChocolateBars("MILKY WAY", 100.0f));
-                add(new ChocolateBars("MILKA", 100.0f));
-            }
-        };
     }
 }

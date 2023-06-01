@@ -1,5 +1,5 @@
 package Application.Interfaces;
 
-public interface PieceProduct {
+public interface FinalProducts {
 
 }

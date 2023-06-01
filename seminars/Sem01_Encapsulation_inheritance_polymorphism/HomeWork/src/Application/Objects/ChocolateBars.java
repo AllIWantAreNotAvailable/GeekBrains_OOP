@@ -1,10 +1,10 @@
 package Application.Objects;
 
 import Application.Abstracts.Product;
-import Application.Interfaces.PieceProduct;
+import Application.Interfaces.FinalProducts;
 import Application.Enums.Units;
 
-public class ChocolateBars extends Product implements PieceProduct {
+public class ChocolateBars extends Product implements FinalProducts {
     public ChocolateBars(String name, Float volume) {
         super(name, volume);
     }

@@ -1,7 +1,6 @@
 package Application.Objects;
 
-import Application.Abstracts.Product;
-import Application.Interfaces.PieceProduct;
+import Application.Interfaces.FinalProducts;
 import Application.Interfaces.Products;
 import Application.Interfaces.Vending;
 
@@ -26,7 +25,7 @@ public class VendingMachine implements Vending {
 
     @Override
     public void putProduct(Products product) {
-        if (product instanceof PieceProduct) {
+        if (product instanceof FinalProducts) {
             if (assortment.containsKey(product.getName())) assortment.get(product.getName()).offer(product);
             else assortment.put(
                     product.getName(),
@@ -40,7 +39,7 @@ public class VendingMachine implements Vending {
     @Override
     public void putProducts(List<Products> products) {
         for (int i = products.size() - 1; i >= 0; i--) {
-            if (products.get(i) instanceof PieceProduct) {
+            if (products.get(i) instanceof FinalProducts) {
                 putProduct(products.remove(i));
             }
         }
