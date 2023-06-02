@@ -163,6 +163,7 @@ public class CoffeeMachine implements Vending {
     }
     
     private CoffeeDrink getCappuccino(CupSizes cupSize) {
+        Map<CupSizes, Map<String, Float>> recipe = new HashMap<>();
         CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, 30.f);
         Water portionWater = getStashed(this.water, 70.0f);
         Milk portionMilk = getStashed(this.milk, 30.0f);
