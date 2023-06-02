@@ -1,11 +1,6 @@
-import Application.Abstracts.Product;
+import Application.Enums.CupSizes;
 import Application.Interfaces.Products;
-import Application.Objects.ChocolateBars;
-import Application.Objects.VendingMachine;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import Application.Objects.*;
 
 public class Main {
     /*
@@ -59,6 +54,10 @@ public class Main {
     TODO Заменить возврат пустых списков(объектов) на null.
      */
     public static void main(String[] args) {
-
+        CoffeeMachine coffeeMachine = new CoffeeMachine(new CoffeeBeans("Arabic", 1000.0f, "Brazil"),
+                new Water("Aqua minerale", 20_000.0f, "Kavkaz"),
+                new Milk("Parmalat", 5_000.0f, "Russia"));
+        Products cappuccino = coffeeMachine.getProduct("Cappuccino", CupSizes.large);
+        System.out.println(cappuccino);
     }
 }

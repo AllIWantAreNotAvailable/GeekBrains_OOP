@@ -163,14 +163,14 @@ public class CoffeeMachine implements Vending {
     }
     
     private CoffeeDrink getCappuccino(CupSizes cupSize) {
-        Map<CupSizes, Map<String, Float>> recipe = new HashMap<>();
-        CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, 30.f);
-        Water portionWater = getStashed(this.water, 70.0f);
-        Milk portionMilk = getStashed(this.milk, 30.0f);
+        Map<CupSizes, Map<String, Float>> recipe = Cappuccino.recipe;
+        CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, recipe.get(cupSize).get("CoffeeBeans"));
+        Water portionWater = getStashed(this.water, recipe.get(cupSize).get("Water"));
+        Milk portionMilk = getStashed(this.milk, recipe.get(cupSize).get("Milk"));
         if (portionCoffeeBeans == null || portionWater == null || portionMilk == null) {
             return null;
         }
-        CoffeeDrink coffeeDrink = new Cappuccino(cupSize, 100.0f, portionCoffeeBeans, portionWater, portionMilk);
+        CoffeeDrink coffeeDrink = new Cappuccino(cupSize, recipe.get(cupSize).get("Amount"), portionCoffeeBeans, portionWater, portionMilk);
         stashedCoffeeBeans = null;
         stashedWater = null;
         stashedMilk = null;
