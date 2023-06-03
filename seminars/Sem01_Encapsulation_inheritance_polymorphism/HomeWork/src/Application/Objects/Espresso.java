@@ -34,9 +34,7 @@ public class Espresso extends CoffeeDrink {
         }};
     }
 
-    Milk milk;
-
-    public Espresso(CupSizes size, Float amount, CoffeeBeans coffeeBeans, Water water, Milk milk) {
+    public Espresso(CupSizes size, Float amount, CoffeeBeans coffeeBeans, Water water) {
         super(switch (size) {
                     case small -> "Эспрессо";
                     case medium -> "Эспрессо лунго";
@@ -47,7 +45,6 @@ public class Espresso extends CoffeeDrink {
                 Temperature.hot,
                 coffeeBeans,
                 water);
-        this.milk = milk;
     }
 
     @Override
@@ -63,5 +60,18 @@ public class Espresso extends CoffeeDrink {
     @Override
     public Units getUnit() {
         return super.unit;
+    }
+
+    @Override
+    public String toString() {
+        return "Espresso{" +
+                "name='" + name + '\'' +
+                ", size=" + size +
+                ", volume=" + volume +
+                ", unit=" + unit +
+                ", coffeeBeans=" + coffeeBeans +
+                ", water=" + water +
+                ", temperature=" + temperature +
+                '}';
     }
 }

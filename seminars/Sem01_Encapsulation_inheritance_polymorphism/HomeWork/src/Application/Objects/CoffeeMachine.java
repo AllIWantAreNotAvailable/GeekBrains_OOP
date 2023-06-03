@@ -147,7 +147,20 @@ public class CoffeeMachine implements Vending {
     }
 
     private CoffeeDrink getEspresso(CupSizes cupSize) {
-        return null;
+        if (cupSize == null) {
+            return null;
+        }
+        Map<CupSizes, Map<String, Float>> recipe = Espresso.recipe;
+        CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, recipe.get(cupSize).get("CoffeeBeans"));
+        Water portionWater = getStashed(this.water, recipe.get(cupSize).get("Water"));
+        if (portionCoffeeBeans == null || portionWater == null) {
+            return null;
+        }
+        CoffeeDrink coffeeDrink = new Espresso(cupSize, recipe.get(cupSize).get("Amount"), portionCoffeeBeans, portionWater);
+        stashedCoffeeBeans = null;
+        stashedWater = null;
+        stashedMilk = null;
+        return coffeeDrink;
     }
 
     private CoffeeDrink getEspresso() {
@@ -163,6 +176,9 @@ public class CoffeeMachine implements Vending {
     }
     
     private CoffeeDrink getCappuccino(CupSizes cupSize) {
+        if (cupSize == null) {
+            return null;
+        }
         Map<CupSizes, Map<String, Float>> recipe = Cappuccino.recipe;
         CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, recipe.get(cupSize).get("CoffeeBeans"));
         Water portionWater = getStashed(this.water, recipe.get(cupSize).get("Water"));
@@ -182,6 +198,9 @@ public class CoffeeMachine implements Vending {
     }
 
     private CoffeeDrink getLatte(CupSizes cupSize) {
+        if (cupSize == null || cupSize == CupSizes.small) {
+            return null;
+        }
         return null;
     }
 
