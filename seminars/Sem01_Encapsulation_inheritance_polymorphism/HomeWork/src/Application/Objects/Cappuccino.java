@@ -47,7 +47,7 @@ public class Cappuccino extends CoffeeDrink {
                 } + " капучино",
                 amount,
                 size,
-                Temperature.hot,
+                Temperature.medium,
                 coffeeBeans,
                 water);
         this.milk = milk;

@@ -40,7 +40,7 @@ public class Latte extends CoffeeDrink {
                 } + " латте",
                 amount,
                 size,
-                Temperature.hot,
+                Temperature.medium,
                 coffeeBeans,
                 water);
         this.milk = milk;

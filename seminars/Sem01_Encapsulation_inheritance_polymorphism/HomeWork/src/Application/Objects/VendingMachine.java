@@ -4,7 +4,12 @@ import Application.Interfaces.FinalProducts;
 import Application.Interfaces.Products;
 import Application.Interfaces.Vending;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.Queue;
+import java.util.List;
+import java.util.Map;
+
 
 public class VendingMachine implements Vending {
 
@@ -15,12 +20,13 @@ public class VendingMachine implements Vending {
         putProducts(products);
     }
 
-    public boolean isEmpty() {
+    @Override
+    public boolean isWorking() {
         for (Queue<Products> queue :
                 assortment.values()) {
-            if (!queue.isEmpty()) return false;
+            if (!queue.isEmpty()) return true;
         }
-        return true;
+        return false;
     }
 
     @Override

@@ -32,13 +32,30 @@ public class CoffeeMachine implements Vending {
     }
 
     @Override
-    public void putProduct(Products product) {
+    public boolean isWorking() {
+        return !(this.coffeeBeans == null || this.water == null) && this.milk != null;
+    }
 
+    @Override
+    public void putProduct(Products product) {
+        if (product instanceof CoffeeBeans tempCoffeeBeans) {
+            if (this.coffeeBeans == null) this.coffeeBeans = tempCoffeeBeans;
+            else this.coffeeBeans.setVolume(this.coffeeBeans.getVolume() + coffeeBeans.getVolume());
+        } else if (product instanceof Water tempWater) {
+            if (this.water == null) this.water = tempWater;
+            else this.water.setVolume(this.water.getVolume() + water.getVolume());
+        } else if (product instanceof Milk tempMilk) {
+            if (this.milk == null) this.milk = tempMilk;
+            else this.milk.setVolume(this.milk.getVolume() + milk.getVolume());
+        }
     }
 
     @Override
     public void putProducts(List<Products> products) {
-
+        for (Products product :
+                products) {
+            putProduct(product);
+        }
     }
 
     private CoffeeBeans getStashed(CoffeeBeans coffeeBeans, float amount) {
@@ -57,18 +74,24 @@ public class CoffeeMachine implements Vending {
             } else if (amount < stashedCoffeeBeans.getVolume()) {
                 float tailedStashedVolume = stashedCoffeeBeans.getVolume() - amount;
                 stashedCoffeeBeans = new CoffeeBeans(stashedCoffeeBeans.getName(), amount, stashedCoffeeBeans.getUnit(), stashedCoffeeBeans.getPlace());
-                this.coffeeBeans.setVolume(this.coffeeBeans.getVolume() + tailedStashedVolume);
+                if (this.coffeeBeans != null) {
+                    this.coffeeBeans.setVolume(this.coffeeBeans.getVolume() + tailedStashedVolume);
+                } else {
+                    this.coffeeBeans = new CoffeeBeans(stashedCoffeeBeans.getName(), tailedStashedVolume, stashedCoffeeBeans.getUnit(), stashedCoffeeBeans.getPlace());
+                }
                 return stashedCoffeeBeans;
-            } else if (amount < stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume()) {
+            } else if (coffeeBeans != null && amount < stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume()) {
                 float missingVolume = amount - stashedCoffeeBeans.getVolume();
                 coffeeBeans.setVolume(coffeeBeans.getVolume() - missingVolume);
                 stashedCoffeeBeans.setVolume(stashedCoffeeBeans.getVolume() + missingVolume);
-            } else if (amount == stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume()) {
+            } else if (coffeeBeans != null && amount == stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume()) {
                 stashedCoffeeBeans.setVolume(stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume());
                 this.coffeeBeans = null;
                 return stashedCoffeeBeans;
             } else {
-                stashedCoffeeBeans.setVolume(stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume());
+                if (coffeeBeans != null) {
+                    stashedCoffeeBeans.setVolume(stashedCoffeeBeans.getVolume() + coffeeBeans.getVolume());
+                }
                 this.coffeeBeans = null;
                 return null;
             }
@@ -92,18 +115,24 @@ public class CoffeeMachine implements Vending {
             } else if (amount < stashedMilk.getVolume()) {
                 float tailedStashedVolume = stashedMilk.getVolume() - amount;
                 stashedMilk = new Milk(stashedMilk.getName(), amount, stashedMilk.getUnit(), stashedMilk.getPlace());
-                this.milk.setVolume(this.milk.getVolume() + tailedStashedVolume);
+                if (this.milk != null) {
+                    this.milk.setVolume(this.milk.getVolume() + tailedStashedVolume);
+                } else {
+                    this.milk = new Milk(stashedMilk.getName(), tailedStashedVolume, stashedMilk.getUnit(), stashedMilk.getPlace());
+                }
                 return stashedMilk;
-            } else if (amount < stashedMilk.getVolume() + milk.getVolume()) {
+            } else if (milk != null && amount < stashedMilk.getVolume() + milk.getVolume()) {
                 float missingVolume = amount - stashedMilk.getVolume();
                 milk.setVolume(milk.getVolume() - missingVolume);
                 stashedMilk.setVolume(stashedMilk.getVolume() + missingVolume);
-            } else if (amount == stashedMilk.getVolume() + milk.getVolume()) {
+            } else if (milk != null && amount == stashedMilk.getVolume() + milk.getVolume()) {
                 stashedMilk.setVolume(stashedMilk.getVolume() + milk.getVolume());
                 this.milk = null;
                 return stashedMilk;
             } else {
-                stashedMilk.setVolume(stashedMilk.getVolume() + milk.getVolume());
+                if (milk != null) {
+                    stashedMilk.setVolume(stashedMilk.getVolume() + milk.getVolume());
+                }
                 this.milk = null;
                 return null;
             }
@@ -127,18 +156,24 @@ public class CoffeeMachine implements Vending {
             } else if (amount < stashedWater.getVolume()) {
                 float tailedStashedVolume = stashedWater.getVolume() - amount;
                 stashedWater = new Water(stashedWater.getName(), amount, stashedWater.getUnit(), stashedWater.getPlace());
-                this.water.setVolume(this.water.getVolume() + tailedStashedVolume);
+                if (this.water != null) {
+                    this.water.setVolume(this.water.getVolume() + tailedStashedVolume);
+                } else {
+                    this.water = new Water(stashedWater.getName(), tailedStashedVolume, stashedWater.getUnit(), stashedWater.getPlace());
+                }
                 return stashedWater;
-            } else if (amount < stashedWater.getVolume() + water.getVolume()) {
+            } else if (water != null && amount < stashedWater.getVolume() + water.getVolume()) {
                 float missingVolume = amount - stashedWater.getVolume();
                 water.setVolume(water.getVolume() - missingVolume);
                 stashedWater.setVolume(stashedWater.getVolume() + missingVolume);
-            } else if (amount == stashedWater.getVolume() + water.getVolume()) {
+            } else if (water != null && amount == stashedWater.getVolume() + water.getVolume()) {
                 stashedWater.setVolume(stashedWater.getVolume() + water.getVolume());
                 this.water = null;
                 return stashedWater;
             } else {
-                stashedWater.setVolume(stashedWater.getVolume() + water.getVolume());
+                if (water != null) {
+                    stashedWater.setVolume(stashedWater.getVolume() + water.getVolume());
+                }
                 this.water = null;
                 return null;
             }
@@ -159,7 +194,6 @@ public class CoffeeMachine implements Vending {
         CoffeeDrink coffeeDrink = new Espresso(cupSize, recipe.get(cupSize).get("Amount"), portionCoffeeBeans, portionWater);
         stashedCoffeeBeans = null;
         stashedWater = null;
-        stashedMilk = null;
         return coffeeDrink;
     }
 
@@ -168,13 +202,25 @@ public class CoffeeMachine implements Vending {
     }
 
     private CoffeeDrink getAmericano(CupSizes cupSize) {
-        return null;
+        if (cupSize == null) {
+            return null;
+        }
+        Map<CupSizes, Map<String, Float>> recipe = Espresso.recipe;
+        CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, recipe.get(cupSize).get("CoffeeBeans"));
+        Water portionWater = getStashed(this.water, recipe.get(cupSize).get("Water"));
+        if (portionCoffeeBeans == null || portionWater == null) {
+            return null;
+        }
+        CoffeeDrink coffeeDrink = new Americano(cupSize, recipe.get(cupSize).get("Amount"), portionCoffeeBeans, portionWater);
+        stashedCoffeeBeans = null;
+        stashedWater = null;
+        return coffeeDrink;
     }
 
     private CoffeeDrink getAmericano() {
         return getAmericano(CupSizes.small);
     }
-    
+
     private CoffeeDrink getCappuccino(CupSizes cupSize) {
         if (cupSize == null) {
             return null;
@@ -198,10 +244,21 @@ public class CoffeeMachine implements Vending {
     }
 
     private CoffeeDrink getLatte(CupSizes cupSize) {
-        if (cupSize == null || cupSize == CupSizes.small) {
+        if (cupSize == null) {
             return null;
         }
-        return null;
+        Map<CupSizes, Map<String, Float>> recipe = Cappuccino.recipe;
+        CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, recipe.get(cupSize).get("CoffeeBeans"));
+        Water portionWater = getStashed(this.water, recipe.get(cupSize).get("Water"));
+        Milk portionMilk = getStashed(this.milk, recipe.get(cupSize).get("Milk"));
+        if (portionCoffeeBeans == null || portionWater == null || portionMilk == null) {
+            return null;
+        }
+        CoffeeDrink coffeeDrink = new Latte(cupSize, recipe.get(cupSize).get("Amount"), portionCoffeeBeans, portionWater, portionMilk);
+        stashedCoffeeBeans = null;
+        stashedWater = null;
+        stashedMilk = null;
+        return coffeeDrink;
     }
 
     private CoffeeDrink getLatte() {
@@ -209,7 +266,19 @@ public class CoffeeMachine implements Vending {
     }
 
     private CoffeeDrink getFrappe(CupSizes cupSize) {
-        return null;
+        if (cupSize == null) {
+            return null;
+        }
+        Map<CupSizes, Map<String, Float>> recipe = Cappuccino.recipe;
+        CoffeeBeans portionCoffeeBeans = getStashed(this.coffeeBeans, recipe.get(cupSize).get("CoffeeBeans"));
+        Water portionWater = getStashed(this.water, recipe.get(cupSize).get("Water"));
+        if (portionCoffeeBeans == null || portionWater == null) {
+            return null;
+        }
+        CoffeeDrink coffeeDrink = new Frappe(cupSize, recipe.get(cupSize).get("Amount"), portionCoffeeBeans, portionWater);
+        stashedCoffeeBeans = null;
+        stashedWater = null;
+        return coffeeDrink;
     }
 
     private CoffeeDrink getFrappe() {
@@ -218,11 +287,11 @@ public class CoffeeMachine implements Vending {
 
     public Products getProduct(String name, CupSizes cupSize) {
         return switch (assortment.get(name)) {
-            case 1 -> cupSize == null ?  getEspresso() : getEspresso(cupSize);
-            case 2 -> cupSize == null ?  getAmericano() : getAmericano(cupSize);
-            case 3 -> cupSize == null ?  getCappuccino() : getCappuccino(cupSize);
-            case 4 -> cupSize == null ?  getLatte() : getLatte(cupSize);
-            case 5 -> cupSize == null ?  getFrappe() : getFrappe(cupSize);
+            case 1 -> cupSize == null ? getEspresso() : getEspresso(cupSize);
+            case 2 -> cupSize == null ? getAmericano() : getAmericano(cupSize);
+            case 3 -> cupSize == null ? getCappuccino() : getCappuccino(cupSize);
+            case 4 -> cupSize == null ? getLatte() : getLatte(cupSize);
+            case 5 -> cupSize == null ? getFrappe() : getFrappe(cupSize);
             default -> null;
         };
     }

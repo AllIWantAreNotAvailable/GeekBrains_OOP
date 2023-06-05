@@ -36,28 +36,39 @@ public class Main {
         + создайте метод возвращающий товар по имени и какому-либо параметру товара getProduct(String name, int volume).
 
     ### HomeWork ###
-    TODO 1. Задачи:
+    1. Задачи:
      - Создать наследника реализованного класса ГорячийНапиток с дополнительным полем int температура.
 
-    TODO 2. Задачи:
+    2. Задачи:
      - Создать класс ГорячихНапитковАвтомат реализующий интерфейс ТорговыйАвтомат;
      - реализовать перегруженный метод getProduct(int name, int volume, int temperature), выдающий продукт
      соответствующий имени, объёму и температуре.
 
-    TODO 3. Задачи:
+    3. Задачи:
      - В main проинициализировать несколько ГорячихНапитков и ГорячихНапитковАвтомат и воспроизвести
      логику, заложенную в программе.
 
-    TODO 4. Всё вышеуказанное создать согласно принципам ООП, пройденным на семинаре.
-    
-    ### Комментарии ### 
-    TODO Заменить возврат пустых списков(объектов) на null.
+    4. Всё вышеуказанное создать согласно принципам ООП, пройденным на семинаре.
+
      */
     public static void main(String[] args) {
-        CoffeeMachine coffeeMachine = new CoffeeMachine(new CoffeeBeans("Arabic", 1000.0f, "Brazil"),
-                new Water("Aqua minerale", 20_000.0f, "Kavkaz"),
-                new Milk("Parmalat", 5_000.0f, "Russia"));
+        CoffeeMachine coffeeMachine = new CoffeeMachine(new CoffeeBeans("Arabic", 110f, "Brazil"),
+                new Water("Aqua minerale", 330f, "Russia, Moscow"),
+                new Milk("Parmalat", 220f, "Russia, Moscow"));
+
+        Products espresso = coffeeMachine.getProduct("Espresso", CupSizes.small);
+        System.out.println(espresso);
+
+        Products americano = coffeeMachine.getProduct("Americano", CupSizes.medium);
+        System.out.println(americano);
+
         Products cappuccino = coffeeMachine.getProduct("Cappuccino", CupSizes.large);
         System.out.println(cappuccino);
+
+        Products latte = coffeeMachine.getProduct("Latte", CupSizes.medium);
+        System.out.println(latte);
+
+        Products frappe = coffeeMachine.getProduct("Frappe", CupSizes.large);
+        System.out.println(frappe);
     }
 }

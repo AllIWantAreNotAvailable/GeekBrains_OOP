@@ -7,11 +7,8 @@ import Application.Interfaces.FinalProducts;
 import Application.Objects.CoffeeBeans;
 import Application.Objects.Water;
 
-import java.util.HashMap;
-import java.util.Map;
 
 public abstract class CoffeeDrink extends Product implements FinalProducts {
-    public Map<CupSizes, Map<String, Float>> recipe;
     protected CupSizes size;
     protected Temperature temperature;
     protected CoffeeBeans coffeeBeans;
