@@ -1,4 +1,4 @@
-# Комментарии по [самостоятельной работе]():
+# Комментарии по [самостоятельной работе](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/tree/main/seminars/Sem02_Abstraction_interfaces_and_Design_example/HomeWork):
 
 ## Что сделано:
 - реализован интерфейс MathOperations;
