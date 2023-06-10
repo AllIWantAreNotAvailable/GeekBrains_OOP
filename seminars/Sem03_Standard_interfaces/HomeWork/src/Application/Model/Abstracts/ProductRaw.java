@@ -15,9 +15,11 @@ public abstract class ProductRaw extends Product implements ProductsRaw {
         setRemainingVolume(volume);
     }
 
-    protected abstract void setRemainingVolume(Float remainingVolume);
-
     protected abstract void setConsiderVolume(ConsiderVolume considerVolume);
+
+    public abstract ConsiderVolume getConsiderVolume();
+
+    protected abstract void setRemainingVolume(Float remainingVolume);
 
     @Override
     public boolean equals(Object object) {

@@ -21,6 +21,11 @@ public class CoffeeBeans extends ProductRaw {
         }
     }
 
+    @Override
+    public ConsiderVolume getConsiderVolume() {
+        return considerVolume;
+    }
+
     private void setRegionOfOrigin(String regionOfOrigin) {
         // TODO: 10.06.2023 Подумать на счет обработки входящего null
         if (regionOfOrigin != null) {
@@ -46,7 +51,7 @@ public class CoffeeBeans extends ProductRaw {
     }
 
     @Override
-    public ProductRaw splitProduct(Float amount) throws Exception {
+    public CoffeeBeans splitProduct(Float amount) throws Exception {
         if (amount != null
                 && amount <= getRemainingVolume()) {
             float remainingCost = getBuyingPrice() / getRemainingVolume() * amount;

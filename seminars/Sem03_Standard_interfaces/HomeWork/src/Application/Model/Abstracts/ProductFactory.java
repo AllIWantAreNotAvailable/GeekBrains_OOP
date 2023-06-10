@@ -16,6 +16,8 @@ public abstract class ProductFactory {
 
     protected abstract void setStatus(WorkingStatus status);
 
+    protected abstract WorkingStatus getStatus();
+
     protected abstract void setUUID(long uuid);
 
 }

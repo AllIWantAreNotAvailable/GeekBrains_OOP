@@ -20,6 +20,11 @@ public class Milk extends ProductRaw {
         }
     }
 
+    @Override
+    public ConsiderVolume getConsiderVolume() {
+        return considerVolume;
+    }
+
     private void setFatnessPercentage(Float fatnessPercentage) {
         // TODO: 10.06.2023 Подумать на счет обработки входящего null
         if (fatnessPercentage != null) {
@@ -45,7 +50,7 @@ public class Milk extends ProductRaw {
     }
 
     @Override
-    public ProductRaw splitProduct(Float amount) throws Exception {
+    public Milk splitProduct(Float amount) throws Exception {
         if (amount != null
                 && amount <= getRemainingVolume()) {
             float remainingCost = getBuyingPrice() / getRemainingVolume() * amount;

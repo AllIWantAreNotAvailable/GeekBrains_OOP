@@ -32,6 +32,11 @@ public class Syrup extends ProductRaw {
     }
 
     @Override
+    public ConsiderVolume getConsiderVolume() {
+        return considerVolume;
+    }
+
+    @Override
     protected void setRemainingVolume(Float remainingVolume) {
         // TODO: 10.06.2023 Подумать на счет обработки входящего null
         if (remainingVolume != null) {
@@ -45,7 +50,7 @@ public class Syrup extends ProductRaw {
     }
 
     @Override
-    public ProductRaw splitProduct(Float amount) throws Exception {
+    public Syrup splitProduct(Float amount) throws Exception {
         if (amount != null
                 && amount <= getRemainingVolume()) {
             float remainingCost = getBuyingPrice() / getRemainingVolume() * amount;
