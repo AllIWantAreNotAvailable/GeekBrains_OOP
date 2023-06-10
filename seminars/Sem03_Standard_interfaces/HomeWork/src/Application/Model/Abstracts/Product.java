@@ -29,12 +29,12 @@ public abstract class Product implements Products {
     public boolean equals(Object object) {
         if (this == object) return true;
         if (!(object instanceof Product that)) return false;
-        return Objects.equals(this.getName(), that.getName());
+        return Objects.equals(this.getName(), that.getName())
+                && Objects.equals(this.getVolume(), that.getVolume());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getUuid(), getName(), getVolume());
+        return Objects.hash(getUuid(), getName(), getVolume(), getBuyingPrice());
     }
-
 }

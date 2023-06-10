@@ -1,15 +1,20 @@
 package Application.Model.Abstracts;
 
-import Application.Model.Interfaces.ProductsFactory;
+import Application.Model.Enumerations.WorkingStatus;
 
-public abstract class ProductFactory implements ProductsFactory {
+public abstract class ProductFactory {
 
     static long nextUUID;
     protected Long factoryUUID;
+    protected WorkingStatus status;
 
     public ProductFactory() {
         setUUID(nextUUID++);
     }
+
+    protected abstract void switchStatus();
+
+    protected abstract void setStatus(WorkingStatus status);
 
     protected abstract void setUUID(long uuid);
 
