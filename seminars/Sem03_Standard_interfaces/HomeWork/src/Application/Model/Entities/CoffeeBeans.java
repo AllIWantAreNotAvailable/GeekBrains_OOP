@@ -103,4 +103,16 @@ public class CoffeeBeans extends ProductRaw {
         super.buyingPrice = buyingPrice;
     }
 
+    @Override
+    public String toString() {
+        return "CoffeeBeans{" +
+                "uuid=" + getUuid() +
+                ", name='" + getName() + '\'' +
+                ", volume=" + getVolume() +
+                ", remainingVolume=" + getRemainingVolume() +
+                ", considerVolume=" + getConsiderVolume() +
+                ", regionOfOrigin='" + getRegionOfOrigin() + '\'' +
+                ", buyingPrice=" + getBuyingPrice() +
+                '}';
+    }
 }

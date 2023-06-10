@@ -15,7 +15,7 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
     }
 
     @Override
-    protected Map<String, Float> getPriceList() {
+    public Map<String, Float> getPriceList() {
         return new HashMap<>() {{
             put("Espresso", 120f);
             put("Espresso with milk", 130f);
@@ -36,6 +36,8 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
     protected void setPriceList(Map<String, Float> priceList) {
         super.priceList = getPriceList();
     }
+
+
 
     @Override
     protected Map<String, Map<String, Float>> getRecipeBook() {

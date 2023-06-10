@@ -102,4 +102,16 @@ public class Milk extends ProductRaw {
         super.buyingPrice = buyingPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Milk{" +
+                "uuid=" + getUuid() +
+                ", name='" + getName() + '\'' +
+                ", volume=" + getVolume() +
+                ", remainingVolume=" + getRemainingVolume() +
+                ", considerVolume=" + getConsiderVolume() +
+                ", fatnessPercentage=" + getFatnessPercentage() +
+                ", buyingPrice=" + getBuyingPrice() +
+                '}';
+    }
 }

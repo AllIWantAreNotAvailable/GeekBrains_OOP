@@ -20,4 +20,6 @@ public abstract class ProductFactory {
 
     protected abstract void setUUID(long uuid);
 
+    protected abstract long getUUID();
+
 }

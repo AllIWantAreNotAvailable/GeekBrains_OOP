@@ -2,7 +2,7 @@ package Application.Services.Abstract;
 
 import Application.Model.Abstracts.ProductFactory;
 import Application.Model.Abstracts.ProductForSale;
-import Application.Services.Interface.ProductServiceInterface;
+import Application.Services.Interfaces.ProductServiceInterface;
 
 import java.util.Map;
 
@@ -24,8 +24,6 @@ public abstract class ProductService<T extends ProductFactory> implements Produc
     protected abstract T getFactory();
 
     protected abstract void setFactory(T factory);
-
-    protected abstract Map<String, Float> getPriceList();
 
     protected abstract void setPriceList(Map<String, Float> priceList);
 

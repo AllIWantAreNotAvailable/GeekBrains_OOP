@@ -104,4 +104,16 @@ public class Sugar extends ProductRaw {
         super.buyingPrice = buyingPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Sugar{" +
+                "uuid=" + getUuid() +
+                ", name='" + getName() + '\'' +
+                ", volume=" + getVolume() +
+                ", considerVolume=" + getConsiderVolume() +
+                ", remainingVolume=" + getRemainingVolume() +
+                ", type=" + getType() +
+                ", buyingPrice=" + getBuyingPrice() +
+                '}';
+    }
 }

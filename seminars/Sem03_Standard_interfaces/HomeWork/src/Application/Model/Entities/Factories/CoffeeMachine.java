@@ -36,7 +36,12 @@ public class CoffeeMachine extends ProductFactory {
     }
 
     @Override
-    protected void switchStatus() {
+    protected long getUUID() {
+        return super.factoryUUID;
+    }
+
+    @Override
+    public void switchStatus() {
         if (status == WorkingStatus.WORKING) {
             setStatus(WorkingStatus.NOT_WORKING);
         } else {
@@ -45,8 +50,8 @@ public class CoffeeMachine extends ProductFactory {
     }
 
     @Override
-    protected void setStatus(WorkingStatus status) {
-        if (!isEmpty()) {
+    public void setStatus(WorkingStatus status) {
+        if (isEmpty()) {
             super.status = WorkingStatus.NOT_ENOUGH_INGREDIENTS;
         } else {
             if (status == WorkingStatus.NOT_ENOUGH_INGREDIENTS) {
@@ -201,5 +206,14 @@ public class CoffeeMachine extends ProductFactory {
             setSyrupStashed(null);
         }
         return composition;
+    }
+
+    @Override
+    public String toString() {
+        return "CoffeeMachine{" +
+                "factoryUUID=" + getUUID() +
+                ", status=" + getStatus() +
+                ", empty=" + isEmpty() +
+                '}';
     }
 }

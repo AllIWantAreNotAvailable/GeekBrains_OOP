@@ -102,4 +102,16 @@ public class Syrup extends ProductRaw {
         super.buyingPrice = buyingPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Syrup{" +
+                "uuid=" + getUuid() +
+                ", name='" + getName() + '\'' +
+                ", volume=" + getVolume() +
+                ", remainingVolume=" + getRemainingVolume() +
+                ", considerVolume=" + getConsiderVolume() +
+                ", taste='" + getTaste() + '\'' +
+                ", buyingPrice=" + getBuyingPrice() +
+                '}';
+    }
 }

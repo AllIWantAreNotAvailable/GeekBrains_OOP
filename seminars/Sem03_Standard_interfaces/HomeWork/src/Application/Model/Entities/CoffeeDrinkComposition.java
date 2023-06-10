@@ -36,4 +36,12 @@ public class CoffeeDrinkComposition extends ProductComposition<ProductRaw> {
     public Iterator<ProductRaw> iterator() {
         return new CoffeeDrinkCompositionIterator(this);
     }
+
+    @Override
+    public String toString() {
+        String out = getComposition().toString();
+        return "CoffeeDrinkComposition{"
+                + out.substring(1, out.length() - 1) +
+                '}';
+    }
 }

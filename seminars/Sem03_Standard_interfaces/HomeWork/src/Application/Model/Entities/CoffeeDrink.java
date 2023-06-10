@@ -94,6 +94,18 @@ public class CoffeeDrink extends ProductForSale {
     }
 
     @Override
+    public String toString() {
+        return "CoffeeDrink{" +
+                "uuid=" + getUuid() +
+                ", name='" + getName() + '\'' +
+                ", volume=" + getVolume() +
+                ", buyingPrice=" + getBuyingPrice() +
+                ", sellingPrice=" + getSellingPrice() +
+                ", composition=" + getComposition() +
+                '}';
+    }
+
+    @Override
     public int compareTo(ProductForSale o) {
         int resultOfCompare = getSellingPrice().compareTo(o.getSellingPrice());
         if (resultOfCompare == 0) {

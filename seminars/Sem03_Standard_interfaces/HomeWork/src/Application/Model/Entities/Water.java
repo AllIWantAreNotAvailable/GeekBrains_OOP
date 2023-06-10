@@ -103,4 +103,16 @@ public class Water extends ProductRaw {
         super.buyingPrice = buyingPrice;
     }
 
+    @Override
+    public String toString() {
+        return "Water{" +
+                "uuid=" + getUuid() +
+                ", name='" + getName() + '\'' +
+                ", volume=" + getVolume() +
+                ", remainingVolume=" + getRemainingVolume() +
+                ", considerVolume=" + getConsiderVolume() +
+                ", phIndex=" + getPhIndex() +
+                ", buyingPrice=" + getBuyingPrice() +
+                '}';
+    }
 }
