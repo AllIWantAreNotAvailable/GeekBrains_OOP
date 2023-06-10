@@ -22,10 +22,7 @@ public class CoffeeDrink extends ProductForSale {
     }
 
     public void setComposition(ProductComposition<ProductRaw> composition) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (composition != null) {
-            this.composition = composition;
-        }
+        this.composition = composition;
     }
 
     private void initFields() {
@@ -43,10 +40,7 @@ public class CoffeeDrink extends ProductForSale {
     }
 
     public void addIngredient(ProductRaw ingredient) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (ingredient != null) {
-            composition.add(ingredient);
-        }
+        composition.add(ingredient);
     }
 
     @Override
@@ -56,10 +50,7 @@ public class CoffeeDrink extends ProductForSale {
 
     @Override
     public void setSellingPrice(Float sellingPrice) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (sellingPrice != null) {
-            super.sellingPrice = sellingPrice;
-        }
+        super.sellingPrice = sellingPrice;
     }
 
     @Override
@@ -69,10 +60,7 @@ public class CoffeeDrink extends ProductForSale {
 
     @Override
     protected void setUuid(Long uuid) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (uuid != null) {
-            super.uuid = uuid;
-        }
+        super.uuid = uuid;
     }
 
     @Override
@@ -82,10 +70,7 @@ public class CoffeeDrink extends ProductForSale {
 
     @Override
     protected void setName(String name) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (name != null) {
-            super.name = name;
-        }
+        super.name = name;
     }
 
     @Override
@@ -95,10 +80,7 @@ public class CoffeeDrink extends ProductForSale {
 
     @Override
     protected void setVolume(Float volume) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (volume != null) {
-            super.volume = volume;
-        }
+        super.volume = volume;
     }
 
     @Override
@@ -108,10 +90,7 @@ public class CoffeeDrink extends ProductForSale {
 
     @Override
     protected void setBuyingPrice(Float buyingPrice) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (buyingPrice != null) {
-            super.buyingPrice = buyingPrice;
-        }
+        super.buyingPrice = buyingPrice;
     }
 
     @Override

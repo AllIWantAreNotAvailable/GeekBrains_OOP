@@ -1,6 +1,6 @@
 package Application.Model.Interfaces;
 
-public interface ProductsForSale {
+public interface ProductForSaleInterface {
 
     Float getSellingPrice();
 

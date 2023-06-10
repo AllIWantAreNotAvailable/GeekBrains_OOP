@@ -1,8 +1,8 @@
 package Application.Model.Abstracts;
 
-import Application.Model.Interfaces.ProductsForSale;
+import Application.Model.Interfaces.ProductForSaleInterface;
 
-public abstract class ProductForSale extends Product implements ProductsForSale, Comparable<ProductForSale> {
+public abstract class ProductForSale extends Product implements ProductForSaleInterface, Comparable<ProductForSale> {
 
     protected Float sellingPrice;
 

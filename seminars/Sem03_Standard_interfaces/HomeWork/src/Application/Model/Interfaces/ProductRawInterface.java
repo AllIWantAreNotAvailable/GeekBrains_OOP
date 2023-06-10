@@ -2,7 +2,7 @@ package Application.Model.Interfaces;
 
 import Application.Model.Abstracts.ProductRaw;
 
-public interface ProductsRaw {
+public interface ProductRawInterface {
 
     Float getRemainingVolume();
 

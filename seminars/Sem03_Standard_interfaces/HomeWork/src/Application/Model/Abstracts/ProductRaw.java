@@ -1,11 +1,11 @@
 package Application.Model.Abstracts;
 
 import Application.Model.Enumerations.ConsiderVolume;
-import Application.Model.Interfaces.ProductsRaw;
+import Application.Model.Interfaces.ProductRawInterface;
 
 import java.util.Objects;
 
-public abstract class ProductRaw extends Product implements ProductsRaw {
+public abstract class ProductRaw extends Product implements ProductRawInterface {
 
     protected Float remainingVolume;
     protected ConsiderVolume considerVolume;

@@ -1,6 +1,6 @@
 package Application.Model.Interfaces;
 
-public interface Products {
+public interface ProductInterface {
 
     Long getUuid();
 

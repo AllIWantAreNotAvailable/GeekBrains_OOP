@@ -13,23 +13,12 @@ public class Water extends ProductRaw {
         setConsiderVolume(ConsiderVolume.YES);
     }
 
-    private void setPhIndex(Float phIndex) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (phIndex != null) {
-            this.phIndex = phIndex;
-        }
-    }
-
     public Float getPhIndex() {
         return phIndex;
     }
 
-    @Override
-    protected void setConsiderVolume(ConsiderVolume considerVolume) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (considerVolume != null) {
-            super.considerVolume = considerVolume;
-        }
+    private void setPhIndex(Float phIndex) {
+        this.phIndex = phIndex;
     }
 
     @Override
@@ -38,16 +27,18 @@ public class Water extends ProductRaw {
     }
 
     @Override
-    protected void setRemainingVolume(Float remainingVolume) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (remainingVolume != null) {
-            super.remainingVolume = remainingVolume;
-        }
+    protected void setConsiderVolume(ConsiderVolume considerVolume) {
+        super.considerVolume = considerVolume;
     }
 
     @Override
     public Float getRemainingVolume() {
         return super.remainingVolume;
+    }
+
+    @Override
+    protected void setRemainingVolume(Float remainingVolume) {
+        super.remainingVolume = remainingVolume;
     }
 
     @Override
@@ -73,40 +64,13 @@ public class Water extends ProductRaw {
     }
 
     @Override
-    protected void setBuyingPrice(Float buyingPrice) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (buyingPrice != null) {
-            super.buyingPrice = buyingPrice;
-        }
+    public Long getUuid() {
+        return super.uuid;
     }
 
     @Override
     protected void setUuid(Long uuid) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (uuid != null) {
-            super.uuid = uuid;
-        }
-    }
-
-    @Override
-    protected void setName(String name) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (name != null) {
-            super.name = name;
-        }
-    }
-
-    @Override
-    protected void setVolume(Float volume) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (volume != null) {
-            super.volume = volume;
-        }
-    }
-
-    @Override
-    public Long getUuid() {
-        return super.uuid;
+        super.uuid = uuid;
     }
 
     @Override
@@ -115,13 +79,28 @@ public class Water extends ProductRaw {
     }
 
     @Override
+    protected void setName(String name) {
+        super.name = name;
+    }
+
+    @Override
     public Float getVolume() {
         return super.volume;
     }
 
     @Override
+    protected void setVolume(Float volume) {
+        super.volume = volume;
+    }
+
+    @Override
     public Float getBuyingPrice() {
         return super.buyingPrice;
+    }
+
+    @Override
+    protected void setBuyingPrice(Float buyingPrice) {
+        super.buyingPrice = buyingPrice;
     }
 
 }

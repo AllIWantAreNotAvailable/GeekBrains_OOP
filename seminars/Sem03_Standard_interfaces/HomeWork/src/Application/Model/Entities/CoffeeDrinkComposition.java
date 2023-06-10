@@ -24,18 +24,12 @@ public class CoffeeDrinkComposition extends ProductComposition<ProductRaw> {
 
     @Override
     public void setComposition(List<ProductRaw> composition) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (composition != null) {
-            super.composition = composition;
-        }
+        super.composition = composition;
     }
 
     @Override
     public void add(ProductRaw ingredient) {
-        // TODO: 10.06.2023 Подумать на счет обработки входящего null
-        if (ingredient != null) {
-            getComposition().add(ingredient);
-        }
+        getComposition().add(ingredient);
     }
 
     @Override

@@ -1,10 +1,10 @@
 package Application.Model.Abstracts;
 
-import Application.Model.Interfaces.Products;
+import Application.Model.Interfaces.ProductInterface;
 
 import java.util.Objects;
 
-public abstract class Product implements Products {
+public abstract class Product implements ProductInterface {
 
     static long nextUUID;
 
