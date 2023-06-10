@@ -1,6 +1,7 @@
 package Application.Model.Entities;
 
 import Application.Model.Abstracts.ProductRaw;
+import Application.Model.Enumerations.ConsiderVolume;
 
 public class Water extends ProductRaw {
 
@@ -9,6 +10,7 @@ public class Water extends ProductRaw {
     public Water(String name, Float phIndex, Float volume, Float buyingPrice) {
         super(name, volume, buyingPrice);
         setPhIndex(phIndex);
+        setConsiderVolume(ConsiderVolume.YES);
     }
 
     private void setPhIndex(Float phIndex) {
@@ -20,6 +22,14 @@ public class Water extends ProductRaw {
 
     public Float getPhIndex() {
         return phIndex;
+    }
+
+    @Override
+    protected void setConsiderVolume(ConsiderVolume considerVolume) {
+        // TODO: 10.06.2023 Подумать на счет обработки входящего null
+        if (considerVolume != null) {
+            super.considerVolume = considerVolume;
+        }
     }
 
     @Override

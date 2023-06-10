@@ -1,6 +1,7 @@
 package Application.Model.Entities;
 
 import Application.Model.Abstracts.ProductRaw;
+import Application.Model.Enumerations.ConsiderVolume;
 
 public class Milk extends ProductRaw {
     private Float fatnessPercentage;
@@ -8,6 +9,15 @@ public class Milk extends ProductRaw {
     public Milk(String name, Float fatnessPercentage, Float volume, Float buyingPrice) {
         super(name, volume, buyingPrice);
         setFatnessPercentage(fatnessPercentage);
+        setConsiderVolume(ConsiderVolume.YES);
+    }
+
+    @Override
+    protected void setConsiderVolume(ConsiderVolume considerVolume) {
+        // TODO: 10.06.2023 Подумать на счет обработки входящего null
+        if (considerVolume != null) {
+            super.considerVolume = considerVolume;
+        }
     }
 
     private void setFatnessPercentage(Float fatnessPercentage) {

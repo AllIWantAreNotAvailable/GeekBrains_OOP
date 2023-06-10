@@ -1,6 +1,7 @@
 package Application.Model.Entities;
 
 import Application.Model.Abstracts.ProductRaw;
+import Application.Model.Enumerations.ConsiderVolume;
 import Application.Model.Enumerations.SugarTypes;
 
 public class Sugar extends ProductRaw {
@@ -10,6 +11,7 @@ public class Sugar extends ProductRaw {
     public Sugar(String name, SugarTypes type, Float volume, Float buyingPrice) {
         super(name, volume, buyingPrice);
         setType(type);
+        setConsiderVolume(ConsiderVolume.NO);
     }
 
     public void setType(SugarTypes type) {
@@ -21,6 +23,14 @@ public class Sugar extends ProductRaw {
 
     public SugarTypes getType() {
         return type;
+    }
+
+    @Override
+    protected void setConsiderVolume(ConsiderVolume considerVolume) {
+        // TODO: 10.06.2023 Подумать на счет обработки входящего null
+        if (considerVolume != null) {
+            super.considerVolume = considerVolume;
+        }
     }
 
     @Override

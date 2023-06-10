@@ -1,6 +1,7 @@
 package Application.Model.Entities;
 
 import Application.Model.Abstracts.ProductRaw;
+import Application.Model.Enumerations.ConsiderVolume;
 
 public class CoffeeBeans extends ProductRaw {
     
@@ -9,6 +10,15 @@ public class CoffeeBeans extends ProductRaw {
     public CoffeeBeans(String name, String regionOfOrigin, Float volume, Float buyingPrice) {
         super(name, volume, buyingPrice);
         setRegionOfOrigin(regionOfOrigin);
+        setConsiderVolume(ConsiderVolume.NO);
+    }
+
+    @Override
+    protected void setConsiderVolume(ConsiderVolume considerVolume) {
+        // TODO: 10.06.2023 Подумать на счет обработки входящего null
+        if (considerVolume != null) {
+            super.considerVolume = considerVolume;
+        }
     }
 
     private void setRegionOfOrigin(String regionOfOrigin) {
