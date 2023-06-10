@@ -12,8 +12,6 @@ public interface ProductServiceInterface {
 
     void makeDeposit(Float cash);
 
-    void makeOrder(String productName) throws Exception;
-
     Float getChange();
 
     Product buyProduct(String productName, Float cash) throws Exception;

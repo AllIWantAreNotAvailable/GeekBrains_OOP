@@ -10,8 +10,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CoffeeService extends ProductService<CoffeeMachine> {
+
     public CoffeeService(CoffeeMachine factory) {
         super(factory);
+        setChange(0f);
+        makeDeposit(0f);
+        makeProfit(0f);
     }
 
     @Override
@@ -36,8 +40,6 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
     protected void setPriceList(Map<String, Float> priceList) {
         super.priceList = getPriceList();
     }
-
-
 
     @Override
     protected Map<String, Map<String, Float>> getRecipeBook() {
@@ -137,8 +139,7 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
         return super.deposit;
     }
 
-    @Override
-    public void makeOrder(String productName) throws Exception {
+    private void makeOrder(String productName) throws Exception {
         Float price = getPriceList().get(productName);
         Map<String, Float> recipe = getRecipeBook().get(productName);
         if (recipe != null && price != null) {
@@ -183,7 +184,7 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
     }
 
     private void makeProfit(Float cash) {
-        super.cash = getProfit() + cash;
+        super.cash = cash;
     }
 
     @Override
@@ -194,7 +195,7 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
             makeOrder(productName);
 
             setChange(getDeposit() - productPrice);
-            makeProfit(productPrice);
+            makeProfit(getProfit() +productPrice);
             makeDeposit(0f);
 
             Product product = getProductStashed();
@@ -203,4 +204,5 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
         }
         throw new Exception("Item not selling or not enough money on deposit");
     }
+
 }
