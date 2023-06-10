@@ -3,12 +3,12 @@ package Application.Model.Abstracts;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class ProductIterator<E extends ProductComposition<T>, T extends Product> implements Iterator<T> {
+public abstract class ProductCompositionIterator<E extends ProductComposition<T>, T extends Product> implements Iterator<T> {
 
     protected int nextIndex;
     protected List<T> productsList;
 
-    public ProductIterator(E productsStructure) {
+    public ProductCompositionIterator(E productsStructure) {
         setProductsList(productsStructure);
         this.nextIndex = 0;
     }
