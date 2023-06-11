@@ -1,9 +1,11 @@
 package Application.Controller.Abstract;
 
+import Application.Model.Abstracts.ProductForSale;
 import Application.Services.Abstract.ProductService;
 import Application.Services.Interfaces.ProductServiceInterface;
 import Application.View.Abstract.ViewModel;
-import Application.View.Interfaces.ViewInterface;
+
+import java.util.List;
 
 public abstract class ControllerModel<M extends ProductService, V extends ViewModel> implements ProductServiceInterface {
     static long nextUUID;
@@ -29,4 +31,6 @@ public abstract class ControllerModel<M extends ProductService, V extends ViewMo
     public abstract V getView();
 
     protected abstract void setView(V view);
+
+    public abstract List<ProductForSale> getSoldSortedList();
 }

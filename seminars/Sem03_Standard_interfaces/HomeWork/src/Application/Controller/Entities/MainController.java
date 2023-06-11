@@ -2,14 +2,35 @@ package Application.Controller.Entities;
 
 import Application.Controller.Abstract.ControllerModel;
 import Application.Model.Abstracts.Product;
+import Application.Model.Abstracts.ProductForSale;
+import Application.Model.Entities.CoffeeDrinkComparator;
 import Application.Services.Entities.CoffeeService;
 import Application.View.Entities.ConsoleApplication;
 
+
+import java.util.ArrayList;
 import java.util.Map;
+import java.util.List;
 
 public class MainController extends ControllerModel<CoffeeService, ConsoleApplication> {
+
+    List<ProductForSale> soldProducts;
+
     public MainController(CoffeeService service, ConsoleApplication view) {
         super(service, view);
+        setSoldProducts(new ArrayList<>());
+    }
+
+    private void setSoldProducts(List<ProductForSale> soldProducts) {
+        this.soldProducts = soldProducts;
+    }
+
+    public List<ProductForSale> getSoldProducts() {
+        return soldProducts;
+    }
+
+    private void addSoldProduct(ProductForSale soldProduct) {
+        getSoldProducts().add(soldProduct);
     }
 
     @Override
@@ -67,7 +88,15 @@ public class MainController extends ControllerModel<CoffeeService, ConsoleApplic
 
     @Override
     public Product buyProduct(String productName, Float cash) throws Exception {
-        return getService().buyProduct(productName, cash);
+        Product product = getService().buyProduct(productName, cash);
+        addSoldProduct((ProductForSale) product);
+        return product;
+    }
+
+    @Override
+    public List<ProductForSale> getSoldSortedList() {
+        getSoldProducts().sort(new CoffeeDrinkComparator<>());
+        return getSoldProducts();
     }
 
     // ### END_SERVICE ###

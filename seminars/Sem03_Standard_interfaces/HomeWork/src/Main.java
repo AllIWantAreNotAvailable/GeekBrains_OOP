@@ -10,7 +10,7 @@ import Application.View.Entities.ConsoleApplication;
 
 public class Main {
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         // Model and service tests:
 //        simpleTests();
         // UI tests:

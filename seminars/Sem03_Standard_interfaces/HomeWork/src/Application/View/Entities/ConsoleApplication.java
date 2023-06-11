@@ -1,9 +1,11 @@
 package Application.View.Entities;
 
 import Application.Controller.Abstract.ControllerModel;
+import Application.Model.Abstracts.ProductForSale;
 import Application.Model.Entities.Factories.CoffeeMachine;
 import Application.View.Abstract.ViewModel;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -24,9 +26,7 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
             System.out.println(mainHandler());
             System.out.printf("%s", handlerPoint);
             switch (scanner.nextInt()) {
-                case 1 -> {
-                    showMenu();
-                }
+                case 1 -> showMenu();
                 case 2 -> {
                     System.out.println("Enter the name of the coffee drink or leave\n" +
                             "the entry blank to see the entire price list: ");
@@ -39,9 +39,7 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
                     System.out.printf("%s", handlerPoint);
                     cashIn(scanner.nextFloat());
                 }
-                case 4 -> {
-                    cashOut();
-                }
+                case 4 -> cashOut();
                 case 5 -> {
                     System.out.println("Ready to order? What would you like?");
                     System.out.printf("%s", handlerPoint);
@@ -57,26 +55,28 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
                         e.getStackTrace();
                     }
                 }
+                case 6 -> showSoldProducts();
                 default -> {
                     System.out.println("Thanks for visiting us!");
                     next = false;
                 }
             }
-//            System.out.println("Any symbol + Enter to continue");
-//            scanner.next();
         }
 
     }
 
     private String mainHandler() {
-        return "### COMMAND MENU ###\n" +
-                "(Enter command number)\n" +
-                "1. Show coffee menu\n" +
-                "2. Show product price(s)\n" +
-                "3. Cash in\n" +
-                "4. Cash out\n" +
-                "5. Make order\n" +
-                "0. EXIT\n";
+        return """
+                ### COMMAND MENU ###
+                (Enter command number)
+                1. Show coffee menu
+                2. Show product price(s)
+                3. Cash in
+                4. Cash out
+                5. Make order
+                6. Show sold products sorted list
+                0. EXIT
+                """;
     }
 
     @Override
@@ -145,5 +145,14 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
     public void getProduct(String productName, Float cash) throws Exception {
         System.out.println("Here is your coffee:");
         System.out.printf("-> %s\n\n", getController().buyProduct(productName, cash));
+    }
+
+    public void showSoldProducts() {
+        System.out.println("### SORTED SOLD PRODUCTS ###");
+        List soldSortedList = getController().getSoldSortedList();
+        for (Object product:
+                soldSortedList) {
+            System.out.printf("%d) %s\n", soldSortedList.indexOf(product) + 1, product);
+        }
     }
 }
