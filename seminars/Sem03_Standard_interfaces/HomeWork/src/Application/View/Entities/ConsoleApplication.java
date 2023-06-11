@@ -18,10 +18,10 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
         String handlerPoint = ">>> ";
 
         System.out.println("\nWelcome to the coffee shop!");
-        System.out.println(mainHandler());
         Scanner scanner = new Scanner(System.in);
         boolean next = true;
         while (next) {
+            System.out.println(mainHandler());
             System.out.printf("%s", handlerPoint);
             switch (scanner.nextInt()) {
                 case 1 -> {
@@ -31,7 +31,7 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
                     System.out.println("Enter the name of the coffee drink or leave\n" +
                             "the entry blank to see the entire price list: ");
                     System.out.printf("%s", handlerPoint);
-                    String productName = scanner.nextLine();
+                    String productName = scanner.next();
                     showProductPrice(productName);
                 }
                 case 3 -> {
@@ -45,9 +45,9 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
                 case 5 -> {
                     System.out.println("Ready to order? What would you like?");
                     System.out.printf("%s", handlerPoint);
-                    String productName = scanner.nextLine();
+                    String productName = scanner.next();
 
-                    System.out.println("Put your money in:");
+                    System.out.println("\nPut your money in:");
                     System.out.printf("%s", handlerPoint);
                     float cash = scanner.nextFloat();
 
@@ -62,18 +62,20 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
                     next = false;
                 }
             }
+//            System.out.println("Any symbol + Enter to continue");
+//            scanner.next();
         }
 
     }
 
     private String mainHandler() {
-        return "### COMMAND MENU ###" +
-                "(Enter command number)" +
-                "1. Show coffee menu" +
-                "2. Show product price(s)" +
-                "3. Cash in" +
-                "4. Cash out" +
-                "5. Make order" +
+        return "### COMMAND MENU ###\n" +
+                "(Enter command number)\n" +
+                "1. Show coffee menu\n" +
+                "2. Show product price(s)\n" +
+                "3. Cash in\n" +
+                "4. Cash out\n" +
+                "5. Make order\n" +
                 "0. EXIT\n";
     }
 
@@ -124,7 +126,7 @@ public class ConsoleApplication extends ViewModel<CoffeeMachine> {
         } else {
             System.out.printf("• %s - ", productName);
             Float price = priceList.get(productName);
-            String result = price != null ? String.format("%.00f RUB\n", price) : "Не найден D';";
+            String result = price != null ? String.format("%.00f RUB\n", price) : "Product not found D';";
             System.out.println(result);
         }
     }

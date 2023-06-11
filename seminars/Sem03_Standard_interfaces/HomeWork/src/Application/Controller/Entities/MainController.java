@@ -39,6 +39,7 @@ public class MainController extends ControllerModel<CoffeeService, ConsoleApplic
 
     @Override
     protected void setView(ConsoleApplication view) {
+        view.setController(this);
         super.view = view;
     }
 

@@ -1,22 +1,53 @@
+import Application.Controller.Abstract.ControllerModel;
+import Application.Controller.Entities.MainController;
 import Application.Model.Abstracts.ProductRaw;
 import Application.Model.Entities.*;
 import Application.Model.Entities.Factories.CoffeeMachine;
 import Application.Model.Enumerations.SugarTypes;
 import Application.Services.Abstract.ProductService;
 import Application.Services.Entities.CoffeeService;
+import Application.View.Entities.ConsoleApplication;
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
         // Model and service tests:
-        simpleTests();
+//        simpleTests();
+        // UI tests:
+        uiTesting();
+    }
 
+    private static void uiTesting() {
+        // Initialize:
+        RawProducts products = rawProductsTest();
+        CoffeeMachine coffeeMachine = new CoffeeMachine(
+                products.coffeeBeans(),
+                products.water(),
+                products.milk(),
+                products.sugar(),
+                products.syrup()
+        );
+        coffeeMachine.switchStatus(); // Главное – не забывать включить)
+        CoffeeService coffeeVending = new CoffeeService(coffeeMachine);
+        ConsoleApplication view = new ConsoleApplication();
+        ControllerModel<CoffeeService, ConsoleApplication> controller = new MainController(coffeeVending, view);
+
+        // Run view
+        view.handler();
     }
 
     private static void simpleTests() throws Exception {
 
         // Raw Products:
         RawProducts resultOfRawProductTest = rawProductsTest();
+        System.out.printf(
+                "%s\n%s\n%s\n%s\n%s\n\n",
+                resultOfRawProductTest.coffeeBeans(),
+                resultOfRawProductTest.water(),
+                resultOfRawProductTest.milk(),
+                resultOfRawProductTest.sugar(),
+                resultOfRawProductTest.syrup()
+        );
 
         // Coffee machine:
         CoffeeMachine coffeeMachine = coffeeMachineTest(resultOfRawProductTest);
@@ -74,9 +105,6 @@ public class Main {
         return resultOfDrinkCompositionTest;
     }
 
-    private record coffeeDrinkCompositionTest(CoffeeDrinkComposition espressoComposition, CoffeeDrinkComposition americanoComposition, CoffeeDrinkComposition cappuccinoComposition, CoffeeDrinkComposition latteComposition) {
-    }
-
     private static CoffeeMachine coffeeMachineTest(RawProducts resultOfRawProductTest) {
         System.out.println("Coffee machine:");
         CoffeeMachine coffeeMachine = new CoffeeMachine(resultOfRawProductTest.coffeeBeans(), resultOfRawProductTest.water(), resultOfRawProductTest.milk(), resultOfRawProductTest.sugar(), resultOfRawProductTest.syrup());
@@ -94,9 +122,13 @@ public class Main {
         Sugar sugar = new Sugar("Sugar", SugarTypes.CANE, 1000f, 500f);
         Syrup syrup = new Syrup("Pumpkin", "Sweet & Spicy", 1000f, 567f);
 
-        System.out.printf("%s\n%s\n%s\n%s\n%s\n\n", coffeeBeans, water, milk, sugar, syrup);
-        RawProducts resultRawProductTest = new RawProducts(coffeeBeans, water, milk, sugar, syrup);
-        return resultRawProductTest;
+        return new RawProducts(coffeeBeans, water, milk, sugar, syrup);
+    }
+
+    private record coffeeDrinkCompositionTest(CoffeeDrinkComposition espressoComposition,
+                                              CoffeeDrinkComposition americanoComposition,
+                                              CoffeeDrinkComposition cappuccinoComposition,
+                                              CoffeeDrinkComposition latteComposition) {
     }
 
     private record RawProducts(CoffeeBeans coffeeBeans, Water water, Milk milk, Sugar sugar, Syrup syrup) {

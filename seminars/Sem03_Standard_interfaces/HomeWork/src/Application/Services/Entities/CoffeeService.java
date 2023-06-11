@@ -22,17 +22,17 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
     public Map<String, Float> getPriceList() {
         return new HashMap<>() {{
             put("Espresso", 120f);
-            put("Espresso with milk", 130f);
+            put("Espresso_with_milk", 130f);
             put("Americano", 150f);
-            put("Americano with milk", 160f);
-            put("Americano with sugar", 155f);
-            put("Americano with milk and sugar", 165f);
+            put("Americano_with_milk", 160f);
+            put("Americano_with_sugar", 155f);
+            put("Americano_with_milk_and_sugar", 165f);
             put("Cappuccino", 200f);
-            put("Cappuccino with syrup", 220f);
-            put("Cappuccino with sugar", 205f);
+            put("Cappuccino_with_syrup", 220f);
+            put("Cappuccino_with_sugar", 205f);
             put("Latte", 250f);
-            put("Latte with syrup", 270f);
-            put("Latte with sugar", 250f);
+            put("Latte_with_syrup", 270f);
+            put("Latte_with_sugar", 250f);
         }};
     }
 
@@ -48,7 +48,7 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
                 put("CoffeeBeans", 10f);
                 put("Water", 30f);
             }});
-            put("Espresso with milk", new HashMap<>() {{
+            put("Espresso_with_milk", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 30f);
                 put("Milk", 10f);
@@ -57,17 +57,17 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
                 put("CoffeeBeans", 10f);
                 put("Water", 60f);
             }});
-            put("Americano with milk", new HashMap<>() {{
+            put("Americano_with_milk", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 60f);
                 put("Milk", 10f);
             }});
-            put("Americano with sugar", new HashMap<>() {{
+            put("Americano_with_sugar", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 60f);
                 put("Sugar", 5f);
             }});
-            put("Americano with milk and sugar", new HashMap<>() {{
+            put("Americano_with_milk_and_sugar", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 60f);
                 put("Milk", 10f);
@@ -78,13 +78,13 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
                 put("Water", 30f);
                 put("Milk", 20f);
             }});
-            put("Cappuccino with syrup", new HashMap<>() {{
+            put("Cappuccino_with_syrup", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 30f);
                 put("Milk", 20f);
                 put("Syrup", 10f);
             }});
-            put("Cappuccino with sugar", new HashMap<>() {{
+            put("Cappuccino_with_sugar", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 30f);
                 put("Milk", 20f);
@@ -95,13 +95,13 @@ public class CoffeeService extends ProductService<CoffeeMachine> {
                 put("Water", 30f);
                 put("Milk", 40f);
             }});
-            put("Latte with syrup", new HashMap<>() {{
+            put("Latte_with_syrup", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 30f);
                 put("Milk", 40f);
                 put("Syrup", 10f);
             }});
-            put("Latte with sugar", new HashMap<>() {{
+            put("Latte_with_sugar", new HashMap<>() {{
                 put("CoffeeBeans", 10f);
                 put("Water", 30f);
                 put("Milk", 40f);
