@@ -54,7 +54,7 @@ public class Main {
     //  учителя и отображения списка учителей имеющихся в системе
 
     public static void main(String[] args) {
-        seminar3HomeWork();
+        seminar4HomeWork();
 
 
         // BLOCK 3.1, TESTS:
@@ -69,7 +69,7 @@ public class Main {
 
     }
 
-    private static void seminar3HomeWork() {
+    private static void seminar4HomeWork() {
         TeachersGroup teachersGroup = new TeachersGroup();
         teachersGroup.add(new Teacher("Алла", "Орлова", 10));
         teachersGroup.add(new Teacher("Ольга", "Волкова", 4));
