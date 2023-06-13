@@ -1,6 +1,5 @@
 package Entities.Student;
 
-import Abstracts.User;
 import Abstracts.UsersGroup;
 
 import java.util.*;

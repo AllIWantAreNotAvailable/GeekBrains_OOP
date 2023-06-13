@@ -1,4 +1,4 @@
-package Entities;
+package Entities.Comparators.Users;
 
 import Abstracts.User;
 
