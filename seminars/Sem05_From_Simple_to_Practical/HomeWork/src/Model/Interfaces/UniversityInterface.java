@@ -9,8 +9,6 @@ import java.util.List;
 
 public interface UniversityInterface<T extends GroupsStream<? extends UsersGroup<? extends User>>> {
 
-    long getUUID();
-
     List<T> getStreams();
 
     void sort(Comparator<T> comparator);

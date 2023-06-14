@@ -4,21 +4,16 @@ import Model.Interfaces.UserInterface;
 
 import java.util.Objects;
 
-public abstract class User implements UserInterface, Comparable<User> {
+public abstract class User extends Entity implements UserInterface, Comparable<User> {
 
-    protected static long nextUUID;
-
-    protected long UUID;
     protected String firstName;
     protected String lastName;
 
     public User(String firstName, String lastName) {
-        setUUID(nextUUID++);
+        super();
         setFirstName(firstName);
         setLastName(lastName);
     }
-
-    protected abstract void setUUID(long UUID);
 
     protected abstract void setFirstName(String firstName);
 

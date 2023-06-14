@@ -8,8 +8,6 @@ import java.util.Map;
 
 public interface UsersGroupInterface<T extends User> {
 
-    long getUUID();
-
     List<T> getGroup();
 
     boolean updateGroup(List<T> group);

@@ -2,29 +2,31 @@ package Model.Abstracts;
 
 import Model.Interfaces.GroupsStreamInterface;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
-public abstract class GroupsStream<T extends UsersGroup<? extends User>> implements GroupsStreamInterface<T>, Iterable<T> {
+public abstract class GroupsStream<T extends UsersGroup<? extends User>> extends Entity implements GroupsStreamInterface<T>, Iterable<T> {
 
-    static long nextUUID;
+    protected Map<Long, T> stream; // TODO: 14.06.2023 Заменить на HashMap<>(): ключ UserGroup.UUID; значение UserGroup
 
-    protected long UUID;
-    protected List<T> stream; // TODO: 14.06.2023 Заменить на HashMap<>(): ключ UserGroup.UUID; значение UserGroup
+    public GroupsStream(Map<Long, T> stream) {
+        super();
+        initStream(stream);
+    }
 
     public GroupsStream(List<T> stream) {
-        setUUID(nextUUID++);
+        this(new HashMap<>());
         setStream(stream);
     }
 
     public GroupsStream() {
-        this(new ArrayList<>());
+        this(new HashMap<>());
     }
 
-    protected abstract void setUUID(long UUID);
+    protected abstract void initStream(Map<Long, T> stream);
 
     protected abstract void setStream(List<T> stream);
+
+    protected abstract Map<Long, T> getStructure();
 
     @Override
     public boolean equals(Object o) {

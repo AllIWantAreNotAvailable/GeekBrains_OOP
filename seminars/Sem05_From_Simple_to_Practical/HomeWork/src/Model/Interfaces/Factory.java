@@ -6,8 +6,10 @@ import java.util.List;
 
 public interface Factory<T extends User> {
 
-    T create(Class<T> tClass);
+    T create();
 
-    List<T> createList(Class<T> tClass, int quantity);
+    List<T> createList(int quantity);
+
+
 
 }

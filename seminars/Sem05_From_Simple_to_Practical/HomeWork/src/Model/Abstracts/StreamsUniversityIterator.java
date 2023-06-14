@@ -1,5 +1,16 @@
 package Model.Abstracts;
 
-public class StreamsUniversityIterator {
-    // TODO: 14.06.2023 Написать Iterator с учетом замены типа атрибута на HashMap<>()
+import java.util.List;
+
+public abstract class StreamsUniversityIterator<T extends GroupsStream<E>, E extends UsersGroup<? extends User>> {
+
+    protected int index;
+    protected final List<E> stream;
+
+    public StreamsUniversityIterator(T stream) {
+        this.index = 0;
+        this.stream = stream.getStream();
+    }
+
+    protected abstract List<E> getStream();
 }

@@ -14,5 +14,4 @@ public abstract class UsersGroupIterator<T extends UsersGroup<E>, E extends User
     }
 
     protected abstract List<E> getGroup();
-
 }

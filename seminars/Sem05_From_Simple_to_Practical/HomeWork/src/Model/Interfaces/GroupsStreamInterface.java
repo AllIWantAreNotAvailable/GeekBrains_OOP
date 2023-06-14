@@ -8,8 +8,6 @@ import java.util.List;
 
 public interface GroupsStreamInterface<T extends UsersGroup<? extends User>> {
 
-    long getUUID();
-
     List<T> getStream();
 
     boolean updateStream(List<T> stream);

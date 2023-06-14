@@ -1,19 +1,16 @@
 package Model.Abstracts;
 
-import Model.Entities.Student.Student;
 import Model.Interfaces.UsersGroupInterface;
 
 import java.util.*;
 
-public abstract class UsersGroup<T extends User> implements UsersGroupInterface<T>, Iterable<T> {
-    static long nextUUID;
+public abstract class UsersGroup<T extends User> extends Entity implements UsersGroupInterface<T>, Iterable<T> {
 
-    protected long UUID;
     protected Map<Long, T> group;
 
     public UsersGroup(Map<Long, T> group) {
-        setUUID(nextUUID++);
-        setGroup(group);
+        super();
+        initGroup(group);
     }
 
     public UsersGroup(List<T> group) {
@@ -25,11 +22,9 @@ public abstract class UsersGroup<T extends User> implements UsersGroupInterface<
         this(new HashMap<>());
     }
 
-    protected abstract void setUUID(long UUID);
+    protected abstract void initGroup(Map<Long, T> group);
 
     protected abstract void setGroup(List<T> group);
-
-    protected abstract void setGroup(Map<Long, T> structure);
 
     protected abstract Map<Long, T> getStructure();
 
