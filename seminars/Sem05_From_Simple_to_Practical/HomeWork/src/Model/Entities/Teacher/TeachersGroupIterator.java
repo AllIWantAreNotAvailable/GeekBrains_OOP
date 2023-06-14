@@ -1,10 +1,10 @@
 package Model.Entities.Teacher;
 
-import Model.Abstracts.Base.EntityGroupIterator;
+import Model.Abstracts.Base.EntitiesGroupIterator;
 
 import java.util.List;
 
-public class TeachersGroupIterator extends EntityGroupIterator<TeachersGroup, Teacher> {
+public class TeachersGroupIterator extends EntitiesGroupIterator<TeachersGroup, Teacher> {
 
     public TeachersGroupIterator(TeachersGroup tGroup) {
         super(tGroup);

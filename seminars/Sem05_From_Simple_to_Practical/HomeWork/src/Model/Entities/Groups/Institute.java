@@ -1,20 +1,21 @@
-package Model.Entities.Teacher;
+package Model.Entities.Groups;
 
-import Model.Abstracts.Users.UsersGroup;
+import Model.Abstracts.Base.EntitiesGroup;
+import Model.Entities.Teacher.TeachersGroup;
 
 import java.util.*;
 
-public class TeachersGroup extends UsersGroup<Teacher> {
+public class Institute extends EntitiesGroup<TeachersGroup> {
 
-    public TeachersGroup(Map<Long, Teacher> group) {
+    public Institute(Map<Long, TeachersGroup> group) {
         super(group);
     }
 
-    public TeachersGroup(List<Teacher> group) {
+    public Institute(List<TeachersGroup> group) {
         super(group);
     }
 
-    public TeachersGroup() {
+    public Institute() {
         super();
     }
 
@@ -25,16 +26,16 @@ public class TeachersGroup extends UsersGroup<Teacher> {
 
     @Override
     public Long getUUID() {
-        return super.UUID;
+        return UUID;
     }
 
     @Override
-    protected void initGroup(Map<Long, Teacher> group) {
+    protected void initGroup(Map<Long, TeachersGroup> group) {
         super.group = Objects.requireNonNull(group, "The field cannot be Null");
     }
 
     @Override
-    protected void initGroup(List<Teacher> group) {
+    protected void initGroup(List<TeachersGroup> group) {
         initGroup();
         add(group);
     }
@@ -45,7 +46,7 @@ public class TeachersGroup extends UsersGroup<Teacher> {
     }
 
     @Override
-    public Map<Long, Teacher> getStructure() {
+    public Map<Long, TeachersGroup> getStructure() {
         return super.group;
     }
 
@@ -55,12 +56,12 @@ public class TeachersGroup extends UsersGroup<Teacher> {
     }
 
     @Override
-    public List<Teacher> getValues() {
+    public List<TeachersGroup> getValues() {
         return new ArrayList<>(getStructure().values());
     }
 
     @Override
-    public Teacher getValue(Long UUID) {
+    public TeachersGroup getValue(Long UUID) {
         return Objects.requireNonNull(
                 getStructure().get(
                         Objects.requireNonNull(UUID, "The field cannot be Null")
@@ -69,23 +70,23 @@ public class TeachersGroup extends UsersGroup<Teacher> {
     }
 
     @Override
-    public List<Teacher> sorted(Comparator<Teacher> comparator) {
-        List<Teacher> list = getValues();
+    public List<TeachersGroup> sorted(Comparator<TeachersGroup> comparator) {
+        List<TeachersGroup> list = getValues();
         list.sort(comparator);
         return list;
     }
 
     @Override
-    public void add(Teacher value) {
+    public void add(TeachersGroup value) {
         Objects.requireNonNull(value, "The field cannot be Null");
         getStructure().put(value.getUUID(), value);
     }
 
     @Override
-    public void add(List<Teacher> values) {
-        for (Teacher teacher :
+    public void add(List<TeachersGroup> values) {
+        for (TeachersGroup teachersGroup :
                 Objects.requireNonNull(values, "The field cannot be Null")) {
-            add(teacher);
+            add(teachersGroup);
         }
     }
 
@@ -104,14 +105,14 @@ public class TeachersGroup extends UsersGroup<Teacher> {
 
     @Override
     public String toString() {
-        return "TeachersGroup{" +
+        return "Institute{" +
                 "UUID=" + getUUID() +
                 ", values=" + getValues() +
                 '}';
     }
 
     @Override
-    public Iterator<Teacher> iterator() {
-        return new TeachersGroupIterator(this);
+    public Iterator<TeachersGroup> iterator() {
+        return new InstituteIterator(this);
     }
 }

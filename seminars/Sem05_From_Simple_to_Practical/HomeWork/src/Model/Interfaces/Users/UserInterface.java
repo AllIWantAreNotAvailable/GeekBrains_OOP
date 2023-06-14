@@ -1,9 +1,8 @@
 package Model.Interfaces.Users;
 
 import Model.Abstracts.Users.User;
-import Model.Interfaces.Base.EntityInterface;
 
-public interface UserInterface extends EntityInterface<User> {
+public interface UserInterface<T extends User> {
 
     String getLastName();
 

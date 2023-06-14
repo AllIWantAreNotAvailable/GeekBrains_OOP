@@ -1,11 +1,10 @@
 package Model.Entities.Student;
 
-import Model.Abstracts.Base.EntityGroup;
-import Model.Entities.Teacher.Teacher;
+import Model.Abstracts.Users.UsersGroup;
 
 import java.util.*;
 
-public class StudentsGroup extends EntityGroup<Student> {
+public class StudentsGroup extends UsersGroup<Student> {
 
     public StudentsGroup(Map<Long, Student> group) {
         super(group);
@@ -22,6 +21,11 @@ public class StudentsGroup extends EntityGroup<Student> {
     @Override
     protected void setUUID(long UUID) {
         super.UUID = UUID;
+    }
+
+    @Override
+    public Long getUUID() {
+        return super.UUID;
     }
 
     @Override
@@ -101,12 +105,13 @@ public class StudentsGroup extends EntityGroup<Student> {
     @Override
     public String toString() {
         return "StudentsGroup{" +
+                "UUID=" + getUUID() +
                 ", values=" + getValues() +
                 '}';
     }
 
     @Override
     public Iterator<Student> iterator() {
-        return null;
+        return new StudentsGroupIterator(this);
     }
 }

@@ -1,11 +1,11 @@
 package Model.Abstracts.Users;
 
-import Model.Abstracts.Base.EntityGroup;
+import Model.Abstracts.Base.EntitiesGroup;
 
 import java.util.List;
 import java.util.Map;
 
-public abstract class UsersGroup<T extends User> extends EntityGroup<T> {
+public abstract class UsersGroup<T extends User> extends EntitiesGroup<T> {
     public UsersGroup(Map<Long, T> group) {
         super(group);
     }

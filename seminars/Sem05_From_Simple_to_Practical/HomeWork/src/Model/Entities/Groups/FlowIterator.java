@@ -1,17 +1,18 @@
-package Model.Entities.Student;
+package Model.Entities.Groups;
 
 import Model.Abstracts.Base.EntitiesGroupIterator;
+import Model.Entities.Student.StudentsGroup;
 
 import java.util.List;
 
-public class StudentsGroupIterator extends EntitiesGroupIterator<StudentsGroup, Student> {
+public class FlowIterator extends EntitiesGroupIterator<Flow, StudentsGroup> {
 
-    public StudentsGroupIterator(StudentsGroup tGroup) {
+    public FlowIterator(Flow tGroup) {
         super(tGroup);
     }
 
     @Override
-    protected List<Student> getList() {
+    protected List<StudentsGroup> getList() {
         return super.eList;
     }
 
@@ -21,7 +22,7 @@ public class StudentsGroupIterator extends EntitiesGroupIterator<StudentsGroup, 
     }
 
     @Override
-    public Student next() {
+    public StudentsGroup next() {
         return getList().get(index++);
     }
 

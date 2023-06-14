@@ -5,19 +5,19 @@ import Model.Interfaces.Base.EntityGroupInterface;
 import java.util.List;
 import java.util.Map;
 
-public abstract class EntityGroup<T extends Entity> extends Entity implements EntityGroupInterface<T>, Iterable<T> {
+public abstract class EntitiesGroup<T extends Entity> extends Entity implements EntityGroupInterface<T>, Iterable<T> {
 
     protected Map<Long, T> group;
 
-    public EntityGroup(Map<Long, T> group) {
+    public EntitiesGroup(Map<Long, T> group) {
         initGroup(group);
     }
 
-    public EntityGroup(List<T> group) {
+    public EntitiesGroup(List<T> group) {
         initGroup(group);
     }
 
-    public EntityGroup() {
+    public EntitiesGroup() {
         initGroup();
     }
 

@@ -10,6 +10,10 @@ public class Student extends User {
         super(lastName, firstName);
     }
 
+    public Student() {
+        super();
+    }
+
     @Override
     protected void setUUID(long UUID) {
         super.UUID = UUID;
@@ -39,9 +43,6 @@ public class Student extends User {
     public void setFirstName(String firstName) {
         super.firstName = Objects.requireNonNull(firstName, "The field cannot be Null");
     }
-
-    // TODO: 14.06.2023  equals() and hash()
-
     @Override
     public String toString() {
         return "Student{" +
