@@ -5,15 +5,15 @@ import Model.Abstracts.Users.UsersGroup;
 
 import java.util.List;
 
-public class GroupService<T extends UsersGroup<E>, E extends User>{
+public class UserGroupService<T extends UsersGroup<E>, E extends User>{
 
     private T group;
 
-    public GroupService(T group) {
+    public UserGroupService(T group) {
         setGroup(group);
     }
 
-    public GroupService() {
+    public UserGroupService() {
         this(null);
     }
 
