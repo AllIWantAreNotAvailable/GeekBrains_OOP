@@ -1,4 +1,4 @@
-package Model.Abstracts.Base;
+package Model.Abstracts;
 
 import Model.Interfaces.Factories.Factory;
 

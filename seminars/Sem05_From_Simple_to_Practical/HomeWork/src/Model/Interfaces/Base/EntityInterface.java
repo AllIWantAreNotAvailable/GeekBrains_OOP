@@ -1,6 +1,6 @@
 package Model.Interfaces.Base;
 
-import Model.Abstracts.Base.Entity;
+import Model.Abstracts.Entity;
 
 public interface EntityInterface<T extends Entity> {
 

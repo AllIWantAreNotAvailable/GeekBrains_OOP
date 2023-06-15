@@ -1,6 +1,6 @@
 package Model.Interfaces.Factories;
 
-import Model.Abstracts.Base.Entity;
+import Model.Abstracts.Entity;
 
 public interface Factory<T extends Entity> {
 

@@ -1,6 +1,6 @@
 package Model.Interfaces.Base;
 
-import Model.Abstracts.Base.Entity;
+import Model.Abstracts.Entity;
 
 import java.util.Comparator;
 import java.util.List;
@@ -22,7 +22,7 @@ public interface EntityGroupInterface<T extends Entity> {
 
     void add(List<T> values);
 
-    void remove(Long UUID);
+    T remove(Long UUID);
 
-    void remove(List<Long> UUIDs);
+    List<T> remove(List<Long> UUIDs);
 }

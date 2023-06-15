@@ -1,4 +1,4 @@
-package Model.Abstracts.Base;
+package Model.Abstracts;
 
 import java.util.Iterator;
 import java.util.List;
