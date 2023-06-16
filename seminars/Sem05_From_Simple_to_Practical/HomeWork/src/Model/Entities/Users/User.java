@@ -7,7 +7,7 @@ import Model.Interfaces.Users.UserInterface;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public class User extends Entity implements Comparable<User> { // TODO: 16.06.2023 Разобраться с имплементацией UserInterface<User>
+public class User extends Entity implements UserInterface, Comparable<User> {
 
     private String firstName;
     private String lastName;
@@ -21,11 +21,6 @@ public class User extends Entity implements Comparable<User> { // TODO: 16.06.20
 
     public User() {
         this(LocalDate.of(1777, 10, 22), "FirstName", "SecondName");
-    }
-
-    @Override
-    public Long getUUID() {
-        return super.getUUID();
     }
 
     public String getFirstName() {

@@ -1,4 +1,4 @@
-package Services.Abstract;
+package Services.Abstracts;
 
 import Model.Entities.Groups.Base.UsersGroup;
 import Model.Interfaces.Base.EntityGroupInterface;

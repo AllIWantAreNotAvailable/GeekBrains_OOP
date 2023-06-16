@@ -1,9 +1,9 @@
-package Services.Group;
+package Services.Groups;
 
 import Model.Entities.Groups.StudyGroup;
 import Model.Entities.Users.Student;
 import Model.Entities.Users.Teacher;
-import Services.Abstract.GroupService;
+import Services.Abstracts.GroupService;
 
 import java.util.Comparator;
 import java.util.List;
@@ -33,6 +33,18 @@ public class StudyGroupService extends GroupService<StudyGroup, Student> {
     @Override
     public void setGroup(StudyGroup group) {
         super.group = Objects.requireNonNull(group);
+    }
+
+    public Teacher getMentor() {
+        return getGroup().getMentor();
+    }
+
+    public Long getMentorsUUID() {
+        return getMentor().getUUID();
+    }
+
+    public void setMentor(Teacher mentor) {
+        getGroup().setMentor(mentor);
     }
 
     @Override

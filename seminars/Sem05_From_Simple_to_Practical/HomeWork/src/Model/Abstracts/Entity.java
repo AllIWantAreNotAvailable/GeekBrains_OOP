@@ -2,7 +2,7 @@ package Model.Abstracts;
 
 import Model.Interfaces.Base.EntityInterface;
 
-public abstract class Entity implements EntityInterface<Entity> {
+public abstract class Entity implements EntityInterface {
 
     static long nextUUID;
 

@@ -5,7 +5,7 @@ import Model.Interfaces.Base.EntityInterface;
 
 import java.time.LocalDate;
 
-public interface UserInterface<T extends User> extends EntityInterface<T> {
+public interface UserInterface extends EntityInterface {
 
     String getFirstName();
 

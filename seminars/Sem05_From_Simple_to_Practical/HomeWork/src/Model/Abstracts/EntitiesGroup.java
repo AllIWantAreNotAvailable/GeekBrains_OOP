@@ -4,7 +4,6 @@ import Model.Interfaces.Base.EntityGroupInterface;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public abstract class EntitiesGroup<T extends Entity> extends Entity implements EntityGroupInterface<T>, Iterable<T> {
 
