@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Teacher extends User {
-    enum AcademicTitle {
+    public enum AcademicTitle {
         Docent,
         Professor
     }
