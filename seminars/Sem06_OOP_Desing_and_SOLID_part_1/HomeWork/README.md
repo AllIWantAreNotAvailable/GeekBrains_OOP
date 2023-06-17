@@ -7,6 +7,7 @@
 ## Комментарии по выполнению самостоятельной работы
 
 > Принципы [SOLID](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem06_OOP_Desing_and_SOLID/OnlineTasks/SOLID.md)
+> 
 > В качестве объекта рефакторинга взят [срез проекта](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/tree/main/seminars/Sem04_Generics_part_1/HomeWork) после выполнения самостоятельной работы.
 
 ### Состав проекта
@@ -85,9 +86,9 @@
 
 ##### Постановка задачи:
 
-Для начала переработаем структуру абстракций в Нашем проекте. Выделим 2 основные сущности для реализации всей иерархии зависимостей:
+Для начала переработаем структуру абстракций в Нашем проекте. Выделим "2" (родитель + наследник) основные сущности для реализации всей иерархии зависимостей:
 1. Базовая сущность – Entity
-2. Группа сущностей – EntityGroup
+2. Группа сущностей – EntityGroup (extends Entity)
 
 Благодаря тому, что в основу проекта лягут 2 базовые сущности, мы реализуем сразу 3 принципа:
 1. Single Responsibility Principle – потенциально, сможем разграничить зоны ответственности.
@@ -114,9 +115,9 @@ public abstract class Entity {
 /**
 Класс будет родителем для каждой группы сущностей
 */
-public abstract class EntitiesGroup {  
-  
-	public EntitiesGroup() {  
-	}  
+public abstract class EntitiesGroup extends Entity {
+
+	public EntitiesGroup() {
+	}
 }
 ```
