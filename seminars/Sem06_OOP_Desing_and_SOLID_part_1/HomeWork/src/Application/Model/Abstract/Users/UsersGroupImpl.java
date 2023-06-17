@@ -1,6 +1,6 @@
-package Application.Model.Entities.UsersGroups;
+package Application.Model.Abstract.Users;
 
-import Application.Model.Abstract.Users.UserImpl;
+import Application.Model.Abstract.Base.EntitiesGroup;
 import Application.Model.Interfaces.UsersGroups.UsersGroup;
 
 import java.util.HashMap;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-public class UsersGroupImpl<T extends UserImpl> implements UsersGroup<T> {
+public abstract class UsersGroupImpl<T extends UserImpl> extends EntitiesGroup implements UsersGroup<T> {
 
     private Map<String, T> group;
 

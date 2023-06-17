@@ -7,8 +7,8 @@ import java.util.Objects;
 
 public class Student extends UserImpl {
 
-    LocalDate startDate;
-    LocalDate endDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
     public Student(String UUID, String surname, String name, LocalDate dateOfBirth, LocalDate startDate) {
         super(UUID, surname, name, dateOfBirth);
@@ -37,7 +37,7 @@ public class Student extends UserImpl {
 
     @Override
     public boolean equals(Object o) {
-        if (!super.equals(o)) {
+        if (super.equals(o)) {
             if (!(o instanceof Student student)) return false;
             return Objects.equals(getStartDate(), student.getStartDate())
                     && Objects.equals(getEndDate(), student.getEndDate());
@@ -57,8 +57,8 @@ public class Student extends UserImpl {
                 ", surname='" + getSurname() + '\'' +
                 ", name='" + getName() + '\'' +
                 ", dateOfBirth=" + getDateOfBirth() +
-                ", startDate=" + startDate +
-                ", endDate=" + endDate +
+                ", startDate=" + getStartDate() +
+                ", endDate=" + getEndDate() +
                 '}';
     }
 
