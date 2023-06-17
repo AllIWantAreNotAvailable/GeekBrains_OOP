@@ -5,11 +5,16 @@ import Application.Model.Entities.Users.Student;
 import java.time.LocalDate;
 
 public interface StudentService extends UserService<Student> {
+
     LocalDate getStartDate();
 
     void accept(LocalDate startDate);
 
+    boolean isAdmitted();
+
     LocalDate getEndDate();
 
     void kick(LocalDate endDate);
+
+    boolean isExpelled();
 }
