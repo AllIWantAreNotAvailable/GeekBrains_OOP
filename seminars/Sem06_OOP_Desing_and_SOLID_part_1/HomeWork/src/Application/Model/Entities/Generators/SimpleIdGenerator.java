@@ -1,9 +1,11 @@
 package Application.Model.Entities.Generators;
 
 import Application.Model.Abstract.Base.Entity;
-import Application.Model.Generator;
+import Application.Model.Interfaces.Supporting.Generator;
 
-public class SimpleIdGenerator extends Entity implements Generator<Long> {
+import java.util.Objects;
+
+public class SimpleIdGenerator extends Entity implements Generator<String> {
 
     private Long id;
 
@@ -12,15 +14,15 @@ public class SimpleIdGenerator extends Entity implements Generator<Long> {
     }
 
     public SimpleIdGenerator() {
-        setId(0L);
+        this(0L);
     }
 
     private void setId(Long id) {
-        this.id = id;
+        this.id = Objects.requireNonNull(id);
     }
 
     @Override
-    public Long generate() {
-        return id++;
+    public String generate() {
+        return Long.toString(this.id++);
     }
 }

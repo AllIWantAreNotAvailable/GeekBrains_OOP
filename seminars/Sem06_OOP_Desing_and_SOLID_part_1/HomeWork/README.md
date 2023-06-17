@@ -17,20 +17,22 @@
 	3. [UserGroupIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Abstracts/UsersGroupIterator.java)
 	4. [UserGroupStream.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Abstracts/UserGroupsStream.java)
 	5. [UserGroupStreamIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Abstracts/UserGroupsStreamIterator.java)
+
 - Интерфейсы:
 	1. [UserInterface.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Interfaces/UserInterface.java)
 	2. [UsersGroupInterface.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Interfaces/UsersGroupInterface.java)
 	3. [UserGroupsStreamInterface.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Interfaces/UserGroupsStreamInterface.java)
+
 - Сущности:
 	1. [Student.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/Student.java)
 	2. [StudentsGroup.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentsGroup.java)
 	3. [StudentsGroupIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentsGroupIterator.java)
-	5. [StudentsGroupService.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentsGroupService.java)
-	6. [StudentGroupsStream.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentGroupsStream.java)
-	7. [StudentGroupsStreamIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentGroupsStreamIterator.java)
-	8. [Teacher.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Teacher/Teacher.java)
-	9. [TeachersGroup.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Teacher/TeachersGroup.java)
-	10. [TeachersGroupIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Teacher/TeachersGroupIterator.java)
+	4. [StudentsGroupService.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentsGroupService.java)
+	5. [StudentGroupsStream.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentGroupsStream.java)
+	6. [StudentGroupsStreamIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Student/StudentGroupsStreamIterator.java)
+	7. [Teacher.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Teacher/Teacher.java)
+	8. [TeachersGroup.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Teacher/TeachersGroup.java)
+	9. [TeachersGroupIterator.java](https://github.com/AllIWantIsNotAvailable/GeekBrains_OOP/blob/main/seminars/Sem04_Generics_part_1/HomeWork/src/Entities/Teacher/TeachersGroupIterator.java)
 
 
 ### Текущие проблемы
@@ -40,7 +42,8 @@
 Проект имеет 2 основные ветки сущностей:
 - Студенты и ГруппыСтудентов
 - Преподаватели и ГруппыПреподавателей
-При этом, обе ветки и соответсвующие классы дублируют друг друга составом атрибутов и методов.
+
+При этом, обе ветки и соответсвующее классы дублируют друг друга составом атрибутов и методов.
 Это проблема вызовет трудность расширения и поддержки.
 
 
@@ -55,24 +58,24 @@
 
 	.University\
 	|
-	|    .Institute\
+	|	.Institute\
 	|	|
-	|	|    .Faculty\
+	|	|	.Faculty\
 	|	|	|
-	|	|	|    .StudyGroup\
+	|	|	|	.StudyGroup\
 	|	|	|	|
-	|	|	|	|	.List<\Student> studentsGroup;
+	|	|	|	|	.List<Student> studentsGroup;
 	|	|	|	|	.Teacher mentor;
 	|	|	|
-	|	|	|    .List<\Teacher> teachers
-	|	|	|    .Teacher facultyHead
+	|	|	|	.List<Teacher> teachers
+	|	|	|	.Teacher facultyHead
 	|	|	
-	|	|	.List<\Teacher> institutePersonal
+	|	|	.List<Teacher> institutePersonal
 	|	|	.Teacher InstituteDirector
 	|
-	|    .List<\Student> studentsFlow
-	|    .List<\Teacher> universityPersonal
-	|    .Teacher universityDirector
+	|	.List<Student> studentsFlow
+	|	.List<Teacher> universityPersonal
+	|	.Teacher universityDirector
 	|
 
 
@@ -85,6 +88,7 @@
 Для начала переработаем структуру абстракций в Нашем проекте. Выделим 2 основные сущности для реализации всей иерархии зависимостей:
 1. Базовая сущность – Entity
 2. Группа сущностей – EntityGroup
+
 Благодаря тому, что в основу проекта лягут 2 базовые сущности, мы реализуем сразу 3 принципа:
 1. Single Responsibility Principle – потенциально, сможем разграничить зоны ответственности.
 2. Open Closed Principle – мы получим отличную возможность расширять классы новым функционалом без вреда для родителей.
