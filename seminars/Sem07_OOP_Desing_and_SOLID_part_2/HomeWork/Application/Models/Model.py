@@ -1,79 +1,131 @@
 from abc import ABC, abstractmethod
 
+import json
 
-class MathOperations(ABC):
+
+class Calculator(ABC):
+
+    __left: str = None
+    __operation: str = None
+    __right: str = None
+
+    def __init__(self, left: str = None, operation: str = None, right: str = None):
+        self.set_left(left)
+        self.set_operation(operation)
+        self.set_right(right)
 
     @abstractmethod
-    def reset(self):
+    def set_left(self, left: str) -> None:
         pass
 
     @abstractmethod
-    def addition(self, right):
+    def get_left(self):
         pass
 
     @abstractmethod
-    def subtraction(self, right):
+    def set_operation(self, operation: str) -> None:
         pass
 
     @abstractmethod
-    def multiplication(self, right):
+    def get_operation(self):
         pass
 
     @abstractmethod
-    def division(self, right):
-        pass
-
-
-class AbsCalc(ABC):
-
-    # result = None
-
-    def __init__(self, value):
-        # self.set_result(value)
+    def set_right(self, right: str) -> None:
         pass
 
     @abstractmethod
-    def set_result(self, result):
+    def get_right(self):
         pass
 
     @abstractmethod
     def get_result(self):
         pass
 
-    @abstractmethod
-    def show_result(self):
+
+class CalculatorService:
+
+    __calculator: Calculator = None
+    __request: dict = dict(left=None,
+                           operation=None,
+                           right=None)
+
+    def __init__(self, request: str, calculator: Calculator):
+        self.set_request(request)
+        self.set_calculator(calculator)
+
+    def set_calculator(self, calculator: Calculator):
+        self.__calculator = calculator
+
+    def get_calculator(self) -> Calculator:
+        return self.__calculator
+
+    def set_request(self, request: str):
+        self.__request.update(**json.loads(request))
+
+    def get_request(self) -> dict:
+        return self.__request
+
+    def __valid(self, request) -> bool:
         pass
 
+    def get_result(self) -> str:
+        self.get_request()['result'] = str(self.get_calculator()(**self.get_request()).get_result())
+        return json.dumps(self.__request)
 
-class ComplexCalculator(AbsCalc, MathOperations):
 
-    def __init__(self, value: complex):
-        super().__init__(value)
+class ComplexCalculator(Calculator):
 
-    def reset(self) -> None:
-        self.set_result(0)
+    __left: complex = None
+    __operation: str = None
+    __right: complex = None
 
-    def addition(self, right: complex) -> None:
-        left = self.get_result()
-        self.set_result(left + right)
+    def __init__(self, left: str = None, operation: str = None, right: str = None):
+        super().__init__(left, operation, right)
 
-    def subtraction(self, right: complex) -> None:
-        left = self.get_result()
-        self.set_result(left - right)
+    def set_left(self, left: str) -> None:
+        self.__left = complex(left)
 
-    def multiplication(self, right: complex) -> None:
-        left = self.get_result()
-        self.set_result(left * right)
+    def get_left(self) -> complex:
+        return self.__left
 
-    def division(self, right: complex) -> None:
-        left = self.get_result()
-        self.set_result(left / right)
+    def set_operation(self, operation: str):
+        if (len(operation) == 1
+                and operation in ['+', '-', '*', '/']):
+            self.__operation = operation
+        else:
+            raise TypeError('This operation is not provided')
 
-    def set_result(self, result: complex) -> None:
-        self.result = result
+    def get_operation(self):
+        return self.__operation
+
+    def set_right(self, right: str) -> None:
+        self.__right = complex(right)
+
+    def get_right(self) -> complex:
+        return self.__right
 
     def get_result(self) -> complex:
-        return self.result
 
-    def show_result(self) -> None:
-        print(self.get_result())
+        if self.__operation == '+':
+            return self.__addition()
+        elif self.__operation == '-':
+            return self.__subtraction()
+        elif self.__operation == '*':
+            return self.__multiplication()
+        elif self.__operation == '/':
+            return self.__division()
+        else:
+            raise ValueError('No such operation Exception')
+
+    def __addition(self) -> complex:
+        return self.get_left() + self.get_right()
+
+    def __subtraction(self) -> complex:
+        return self.get_left() - self.get_right()
+
+    def __multiplication(self) -> complex:
+        return self.get_left() * self.get_right()
+
+    def __division(self) -> complex:
+        return self.get_left() / self.get_right()
