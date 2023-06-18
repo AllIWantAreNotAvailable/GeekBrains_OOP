@@ -8,52 +8,72 @@ class MathOperations(ABC):
         pass
 
     @abstractmethod
-    def addition(self):
+    def addition(self, right):
         pass
 
     @abstractmethod
-    def subtraction(self):
+    def subtraction(self, right):
         pass
 
     @abstractmethod
-    def multiplication(self):
+    def multiplication(self, right):
         pass
 
     @abstractmethod
-    def division(self):
+    def division(self, right):
         pass
 
 
 class AbsCalc(ABC):
-    def __init__(self, value):
-        self.result = value
 
+    # result = None
+
+    def __init__(self, value):
+        # self.set_result(value)
+        pass
+
+    @abstractmethod
+    def set_result(self, result):
+        pass
+
+    @abstractmethod
+    def get_result(self):
+        pass
+
+    @abstractmethod
     def show_result(self):
         pass
 
 
-class Calculator(AbsCalc, MathOperations):
+class ComplexCalculator(AbsCalc, MathOperations):
 
-    def __init__(self, value):
+    def __init__(self, value: complex):
         super().__init__(value)
 
-    def reset(self):
-        pass
+    def reset(self) -> None:
+        self.set_result(0)
 
-    def addition(self):
-        pass
+    def addition(self, right: complex) -> None:
+        left = self.get_result()
+        self.set_result(left + right)
 
-    def subtraction(self):
-        pass
+    def subtraction(self, right: complex) -> None:
+        left = self.get_result()
+        self.set_result(left - right)
 
-    def multiplication(self):
-        pass
+    def multiplication(self, right: complex) -> None:
+        left = self.get_result()
+        self.set_result(left * right)
 
-    def division(self):
-        pass
+    def division(self, right: complex) -> None:
+        left = self.get_result()
+        self.set_result(left / right)
 
-    def show_result(self):
-        pass
+    def set_result(self, result: complex) -> None:
+        self.result = result
 
+    def get_result(self) -> complex:
+        return self.result
 
-
+    def show_result(self) -> None:
+        print(self.get_result())

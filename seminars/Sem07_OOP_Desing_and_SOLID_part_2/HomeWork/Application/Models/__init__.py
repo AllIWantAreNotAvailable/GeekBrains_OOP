@@ -1,1 +1,1 @@
-from Application.Models.Model import Calculator
+from Application.Models.Model import ComplexCalculator
