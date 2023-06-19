@@ -1,7 +1,6 @@
 from Application import *
 
 
-
 def main():
     controller = Controller(Application, ComplexCalculator)
     controller.master.run_view()

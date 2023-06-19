@@ -1,8 +1,15 @@
+"""
+Модуль содержит основную логику приложения.
+"""
+
 from typing import Any, Union, Literal
 from abc import ABC, abstractmethod
 
 
 class Calculator(ABC):
+    """
+    Базовый класс для создания приложения "Калькулятор"
+    """
     __left: Union[int, float, complex]
     __operation: Literal['-', '+', '*', '/']
     __right: Union[int, float, complex]
@@ -67,7 +74,9 @@ class Calculator(ABC):
 
 
 class ComplexCalculator(Calculator):
-
+    """
+    Калькулятор комплексных чисел.
+    """
     def __init__(self,
                  left: Union[int, float, complex],
                  operation: Literal['-', '+', '*', '/'],
