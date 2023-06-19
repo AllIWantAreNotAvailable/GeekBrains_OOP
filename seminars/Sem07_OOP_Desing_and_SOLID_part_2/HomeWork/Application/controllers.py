@@ -69,13 +69,14 @@ class ViewController(AbcController):
         super().__init__(master, slave)
 
     def run_view(self) -> NoReturn:
-        self.slave(self).run()
+        while self.slave(self).run():
+            pass
 
     def post(self, request: JSON) -> JSON:
-        return JSON(self.master.post(request))
+        return JSON(self.master.post(json.dumps(request)))
 
     def get(self) -> JSON:
-        return JSON(self.master.get())
+        return JSON(json.loads(self.master.get()))
 
 
 class Controller(AbcController):

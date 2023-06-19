@@ -1,4 +1,4 @@
-from typing import NoReturn, NewType, Any, Union, Literal
+from typing import Any, Union, Literal
 from abc import ABC, abstractmethod
 
 
@@ -15,10 +15,11 @@ class Calculator(ABC):
         self.operation = operation
         self.right = right
 
-    def __call__(self, *args, **kwargs) -> NoReturn:
-        self.left = kwargs['left'] if kwargs['left'] else args[0]
-        self.operation = kwargs['operation'] if kwargs['operation'] else args[1]
-        self.right = kwargs['right'] if kwargs['right'] else args[2]
+    def __call__(self, *args, **kwargs) -> Any:
+        self.left = kwargs['left']
+        self.operation = kwargs['operation']
+        self.right = kwargs['right']
+        return self
 
     @property
     def left(self) -> Union[int, float, complex]:
@@ -72,6 +73,12 @@ class ComplexCalculator(Calculator):
                  operation: Literal['-', '+', '*', '/'],
                  right: Union[int, float, complex]):
         super().__init__(complex(left), operation, complex(right))
+
+    def __call__(self, *args, **kwargs) -> Any:
+        self.left = complex(kwargs['left'])
+        self.operation = complex(kwargs['operation'])
+        self.right = complex(kwargs['right'])
+        return self
 
     def addition(self) -> Union[int, float, complex]:
         return self.left + self.right

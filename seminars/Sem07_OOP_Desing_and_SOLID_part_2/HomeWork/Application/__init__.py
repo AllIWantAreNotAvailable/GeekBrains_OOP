@@ -1,2 +1,3 @@
 from .controllers import ModelController, ViewController, Controller
-from .model import ComplexCalculator
+from .models import ComplexCalculator
+from .views import Application
