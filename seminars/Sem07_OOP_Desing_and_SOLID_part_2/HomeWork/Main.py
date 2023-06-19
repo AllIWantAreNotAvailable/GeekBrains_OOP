@@ -2,18 +2,16 @@ from Application import *
 
 
 def main():
+    # Initializing controller:
     controller = MainController()
-    controller.get_view()['__ComplexCalculatorView__'].run()
-
-
-def test():
-    request = dict(left=str(complex('3+1j')),
-                   operation='+',
-                   right=str(complex('4+2j'))
-                   )
-    # request = json.dumps(request)
-    # service = CalculatorService(request, ComplexCalculator)
-    # print('{left} {operation} {right} = {result}'.format(**json.loads(service.get_result())))
+    # Initializing model and view:
+    mode_controller = CalculatorModelController(controller, ComplexCalculatorModel)
+    view_controller = CalculatorViewController(controller, ComplexCalculatorView)
+    # Setting dependencies:
+    controller.set_model(mode_controller)
+    controller.set_view(view_controller)
+    # Running program
+    controller.run()
 
 
 if __name__ == '__main__':

@@ -1,3 +1,7 @@
-from .Models.Model import CalculatorService
-from .Controllers.Controller import Controller, MainController
-from .Views.View import ComplexCalculatorView
+from .Abstracts import Controller, ModelController, ViewController
+from .Abstracts import Model, View
+
+from .Controllers import MainController
+
+from .Models import CalculatorModelController, ComplexCalculatorModel
+from .Views import CalculatorViewController, ComplexCalculatorView
