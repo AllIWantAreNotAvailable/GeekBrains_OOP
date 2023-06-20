@@ -5,6 +5,8 @@
 from typing import NoReturn, Any, Callable
 from abc import ABC, abstractmethod
 
+from .app_logging import logger
+
 
 class View(ABC):
     """
@@ -40,6 +42,7 @@ class View(ABC):
         pass
 
 
+@logger
 class Application(View):
     """
     Главный пользовательский интерфейс, запускается при старте приложения.
@@ -49,6 +52,7 @@ class Application(View):
     def __init__(self, master: Any):
         super().__init__(master)
         self.apps = APPLICATIONS
+        self.apps['Выход'] = self.__class__
 
     @property
     def apps(self) -> dict:
@@ -86,6 +90,7 @@ class Application(View):
                 return True
 
 
+@logger
 class ComplexCalcView(View):
     """
     Пользовательский интерфейс приложения "Калькулятор комплексных чисел".
@@ -238,6 +243,5 @@ class ComplexCalcView(View):
 # TODO Константа содержит в себе список приложений, ее стоит перенести вверх модуля. Чтобы это сделать,
 #   необходимо добавить метод модуля, который отвечает за список импортируемых объектов и из него заполнить константу
 APPLICATIONS: dict = {
-    'Выход': Application,
     'Калькулятор комплексных чисел': ComplexCalcView
 }

@@ -5,6 +5,8 @@
 from typing import Any, Union, Literal
 from abc import ABC, abstractmethod
 
+from .app_logging import logger
+
 
 class Calculator(ABC):
     """
@@ -73,6 +75,7 @@ class Calculator(ABC):
         pass
 
 
+@logger
 class ComplexCalculator(Calculator):
     """
     Калькулятор комплексных чисел.

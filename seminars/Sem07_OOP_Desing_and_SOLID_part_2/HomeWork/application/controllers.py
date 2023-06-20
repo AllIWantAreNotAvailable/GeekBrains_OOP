@@ -5,6 +5,8 @@
 from typing import NoReturn, NewType, Any, Union
 from abc import ABC, abstractmethod
 
+from .app_logging import logger
+
 import json
 
 # Тип для аннотаций методов классов
@@ -56,6 +58,7 @@ class AbcController(ABC):
         pass
 
 
+@logger
 class ModelController(AbcController):
     """
     Контроллер модели отвечает за передачу запроса в модель и возврат данных в интерфейс пользователя.
@@ -89,6 +92,7 @@ class ModelController(AbcController):
             return JSON(json.dumps(dict(response=200, result=str(result))))
 
 
+@logger
 class ViewController(AbcController):
     """
     Контроллер интерфейса приложения, отвечает за отправку и получения данных интерфейсом из модели, а также за
@@ -120,6 +124,7 @@ class ViewController(AbcController):
         return JSON(json.loads(self.master.get()))
 
 
+@logger
 class Controller(AbcController):
     """
     Главный контроллер приложения, осуществляет маршрутизацию от контроллера View к контроллеру Model.
