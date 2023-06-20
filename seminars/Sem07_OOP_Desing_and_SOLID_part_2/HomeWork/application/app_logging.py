@@ -46,6 +46,6 @@ def logger(cls):
         def get_object_name(self) -> str:
             return f'{self.object.__class__.__name__}'
 
-    logging.basicConfig(level=logging.INFO, filename="log.log", format="%(asctime)s %(levelname)s -> %(message)s")
+    logging.basicConfig(level=logging.INFO, filename="logs.log", format="%(asctime)s %(levelname)s -> %(message)s")
 
     return Logger
